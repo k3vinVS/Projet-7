@@ -10,393 +10,397 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Les petits plats</title>
   </head>
   <body>
     <div class="container">
       <!-- HEADER -->
-      <div class="row">
-        <div class="col mt-5 mb-3 text-center">
-          <svg
-            width="52"
-            height="47"
-            viewBox="0 0 52 47"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M39.5083 25.3424V35.1415H12.4024V25.3424C7.99768 25.3424 4.60945 21.9635 4.60945 17.5708C4.60945 13.1781 7.99768 9.79908 12.4024 9.79908C15.4518 9.79908 18.1624 11.4886 19.5177 14.1918L22.9059 12.5023C21.8895 10.8128 20.873 9.12328 19.1789 8.10958C20.5342 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7483 7.43378 33.7483 11.8265C33.7483 13.1781 33.4095 14.5297 32.7318 15.8813L36.12 17.9087C37.1365 16.2192 37.8142 14.1918 37.8142 11.8265C37.8142 11.1507 37.8142 10.8128 37.8142 10.137C38.4918 9.79908 39.1695 9.79908 39.8471 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.913 25.3424 39.5083 25.3424ZM39.5083 42.9132H12.4024V39.1963H39.5083V42.9132ZM39.5083 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.0871 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7742 6.08219 13.7577 6.08219 12.4024 6.08219C5.96474 6.08219 0.882385 11.1507 0.882385 17.5708C0.882385 22.6393 4.27062 27.0319 8.67533 28.3835V46.2922H43.5742V28.7214C47.9789 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5083 6.08219ZM22.2283 31.0867H18.5012V23.653H22.2283V31.0867ZM33.7483 31.0867H30.0212V23.653H33.7483V31.0867Z"
-              fill="#D04F4F"
-            />
-          </svg>
-          <h2 class="font-weight-bold" style="color: #d04f4f; font-size: 36px">
-            Les petits plats
-          </h2>
-        </div>
-      </div>
-
-      <!-- INPUT SEARCH -->
-      <div class="row mb-3">
-        <div class="col input-group" style="height: 69px">
-          <input
-            id="searchInput"
-            class="form-control bg-light border-right-0"
-            type="text"
-            placeholder="Rechercher une recette"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text bg-light">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M23.4167 20.6667H21.9683L21.455 20.1717C23.2517 18.0817 24.3333 15.3683 24.3333 12.4167C24.3333 5.835 18.9983 0.5 12.4167 0.5C5.835 0.5 0.5 5.835 0.5 12.4167C0.5 18.9983 5.835 24.3333 12.4167 24.3333C15.3683 24.3333 18.0817 23.2517 20.1717 21.455L20.6667 21.9683V23.4167L29.8333 32.565L32.565 29.8333L23.4167 20.6667V20.6667ZM12.4167 20.6667C7.85167 20.6667 4.16667 16.9817 4.16667 12.4167C4.16667 7.85167 7.85167 4.16667 12.4167 4.16667C16.9817 4.16667 20.6667 7.85167 20.6667 12.4167C20.6667 16.9817 16.9817 20.6667 12.4167 20.6667Z"
-                  fill="black"
-                />
-              </svg>
-            </span>
+      <header>
+        <div class="row">
+          <div class="col mt-5 mb-3 text-center">
+            <svg
+              width="50.48"
+              height="46.29"
+              viewBox="0 0 50.48 46.29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M39.5083 25.3424V35.1415H12.4024V25.3424C7.99768 25.3424 4.60945 21.9635 4.60945 17.5708C4.60945 13.1781 7.99768 9.79908 12.4024 9.79908C15.4518 9.79908 18.1624 11.4886 19.5177 14.1918L22.9059 12.5023C21.8895 10.8128 20.873 9.12328 19.1789 8.10958C20.5342 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7483 7.43378 33.7483 11.8265C33.7483 13.1781 33.4095 14.5297 32.7318 15.8813L36.12 17.9087C37.1365 16.2192 37.8142 14.1918 37.8142 11.8265C37.8142 11.1507 37.8142 10.8128 37.8142 10.137C38.4918 9.79908 39.1695 9.79908 39.8471 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.913 25.3424 39.5083 25.3424ZM39.5083 42.9132H12.4024V39.1963H39.5083V42.9132ZM39.5083 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.0871 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7742 6.08219 13.7577 6.08219 12.4024 6.08219C5.96474 6.08219 0.882385 11.1507 0.882385 17.5708C0.882385 22.6393 4.27062 27.0319 8.67533 28.3835V46.2922H43.5742V28.7214C47.9789 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5083 6.08219ZM22.2283 31.0867H18.5012V23.653H22.2283V31.0867ZM33.7483 31.0867H30.0212V23.653H33.7483V31.0867Z"
+                fill="#D04F4F"
+              />
+            </svg>
+            <h1
+              class="font-weight-bold"
+            >
+              Les petits plats
+            </h1>
           </div>
         </div>
-      </div>
+        <!-- INPUT SEARCH -->
+        <div class="row mb-3">
+          <div class="col input-group">
+            <input
+              id="search-input"
+              class="form-control border-right-0"
+              type="text"
+              placeholder="Rechercher une recette"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text search">
+                <svg
+                  width="32.06"
+                  height="32.06"
+                  viewBox="0 0 32.06 32.06"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M23.4167 20.6667H21.9683L21.455 20.1717C23.2517 18.0817 24.3333 15.3683 24.3333 12.4167C24.3333 5.835 18.9983 0.5 12.4167 0.5C5.835 0.5 0.5 5.835 0.5 12.4167C0.5 18.9983 5.835 24.3333 12.4167 24.3333C15.3683 24.3333 18.0817 23.2517 20.1717 21.455L20.6667 21.9683V23.4167L29.8333 32.565L32.565 29.8333L23.4167 20.6667V20.6667ZM12.4167 20.6667C7.85167 20.6667 4.16667 16.9817 4.16667 12.4167C4.16667 7.85167 7.85167 4.16667 12.4167 4.16667C16.9817 4.16667 20.6667 7.85167 20.6667 12.4167C20.6667 16.9817 16.9817 20.6667 12.4167 20.6667Z"
+                    fill="black"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
 
       <!-- SORT TAGS -->
-      <div class="row">
-        <div class="col mt-4 mb-3 tag-section">
-          <div
-            class="col mb-2 mr-2 bg-primary d-inline-flex justify-content-around p-2 text-white rounded"
-            style="width: 107px; height: 37px; font-size: 14px"
-          >
-            Coco
-            <svg
-              class="align-text-top"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-          <div
-            class="col mb-2 mr-2 d-inline-flex justify-content-around p-2 text-white rounded"
-            style="
-              width: 107px;
-              height: 37px;
-              font-size: 14px;
-              background: #68d9a4;
-            "
-          >
-            Blender
-            <svg
-              class="align-text-top"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-          <div
-            class="col mb-2 mr-2 d-inline-flex justify-content-around p-2 text-white rounded"
-            style="
-              width: 107px;
-              height: 37px;
-              font-size: 14px;
-              background: #ed6454;
-            "
-          >
-            Verre
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- SORT BUTTONS -->
-      <div class="row">
-        <div class="col">
-          <!-- FIRST BUTTON -->
-          <div class="btn-group mb-4 mr-3">
-            <button
-              type="button"
-              class="btn btn-primary dropdown-toggle d-inline border-0"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="width: 170px; height: 69px; font-size: 18px"
-            >
-              Ingredients
-            </button>
-            <div
-              class="dropdown-menu bg-primary"
-              style="width: 170px; height: 69px"
-            >
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
+      <main>
+        <section>
+          <div class="row">
+            <div class="col mt-4 mb-3 tag-section">
+              <!-- FIRST TAG -->
+              <!-- <div
+                class="col tag mb-2 mr-2 bg-primary d-inline-flex justify-content-around p-2 text-white rounded"
+                style="width: 107px; height: 37px; font-size: 14px"
+              >
+                Coco
+                <svg
+                  class="align-text-top close-tag"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
+                    fill="white"
+                  />
+                </svg>
+              </div> -->
+              <!-- SECOND TAG -->
+              <!-- <div
+                class="col tag mb-2 mr-2 d-inline-flex justify-content-around p-2 text-white rounded"
+                style="
+                  width: 107px;
+                  height: 37px;
+                  font-size: 14px;
+                  background: #68d9a4;
+                "
+              >
+                Blender
+                <svg
+                  class="align-text-top close-tag"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
+                    fill="white"
+                  />
+                </svg>
+              </div> -->
+              <!-- THIRD TAG -->
+              <!-- <div
+                class="col tag mb-2 mr-2 d-inline-flex justify-content-around p-2 text-white rounded"
+                style="
+                  width: 107px;
+                  height: 37px;
+                  font-size: 14px;
+                  background: #ed6454;
+                "
+              >
+                Verre
+                <svg
+                  class="align-text-top close-tag"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
+                    fill="white"
+                  />
+                </svg>
+              </div> -->
             </div>
           </div>
-
-          <!-- SECOND BUTTON -->
-          <div class="btn-group mb-4 mr-3">
-            <button
-              type="button"
-              class="btn btn-primary dropdown-toggle d-inline border-0 rounded"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="
-                width: 170px;
-                height: 69px;
-                font-size: 18px;
-                background: #68d9a4;
-              "
-            >
-              Appareils
-            </button>
-            <div
-              class="dropdown-menu"
-              style="width: 170px; height: 69px; background: #68d9a4"
-            >
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
-            </div>
-          </div>
-
-          <!-- THIRD BUTTON -->
-          <div class="btn-group mb-4 mr-3">
-            <button
-              type="button"
-              class="btn btn-primary dropdown-toggle d-inline border-0 rounded"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="
-                width: 170px;
-                height: 69px;
-                font-size: 18px;
-                background: #ed6454;
-              "
-            >
-              Ustensiles
-            </button>
-            <div
-              class="dropdown-menu"
-              style="width: 170px; height: 69px; background: #ed6454"
-            >
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
-              <a href="#" class="dropdown-item"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARDS SECTION -->
-      <div class="row">
-        <!-- FIRST CARD -->
-        <div class="col-12 col-lg-4 card-section">
-          <div class="card mb-4 mb-lg-5 border-primary shadow">
-            <div class="bg-light rounded-top" style="height: 180px"></div>
-            <div class="card-body">
-              <div class="card-top">
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="card-title">Limonade de Coco</h6>
-                  </div>
-                  <div class="col-6 d-flex justify-content-end">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <p class="mb-2 align-top">10 min</p>
-                  </div>
+          <!-- SORT BUTTONS -->
+          <div class="row">
+            <div class="col dropdown">
+              <!-- FIRST BUTTON -->
+              <div class="btn-group mb-4 mr-3">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle d-inline border-0"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <p class="search-text-button d-inline-flex">Ingredients</p>
+                  <input
+                    class="input-search"
+                    placeholder="Rechercher un ingrédient"
+                  />
+                </button>
+                <div
+                  class="dropdown-menu bg-primary"
+                  style="width: 170px; height: 69px"
+                >
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-6">
-                  <p class="m-0">
-                    <small><strong>Lait de coco: </strong>400ml</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Jus de citron: </strong>2</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Crème de coco: </strong>4 cuillères</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Sucre: </strong>20g</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Glaçons: </strong>2</small>
-                  </p>
+              <!-- SECOND BUTTON -->
+              <div class="btn-group mb-4 mr-3">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle d-inline border-0 rounded"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="background: #68d9a4"
+                >
+                  <p class="search-text-button d-inline-flex">Appareils</p>
+                  <input
+                    class="input-search"
+                    placeholder="Rechercher un appareil"
+                  />
+                </button>
+                <div
+                  class="dropdown-menu"
+                  style="width: 170px; height: 69px; background: #68d9a4"
+                >
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
                 </div>
-                <div class="col-6">
-                  <p class="card-text">
-                    <small>
-                      Mettre les glaçons à votre goût dans le blender, ajouter
-                      le lait, la crème de coco, le jus de 2 citrons et le
-                      sucre. Mixer jusqu'à avoir la consistence désirée.
-                    </small>
-                  </p>
+              </div>
+              <!-- THIRD BUTTON -->
+              <div class="btn-group mb-4 mr-3">
+                <button
+                  type="button"
+                  class="btn btn-primary dropdown-toggle d-inline border-0 rounded"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="background: #ed6454"
+                >
+                  <p class="search-text-button d-inline-flex">Ustensiles</p>
+                  <input
+                    class="input-search"
+                    placeholder="Rechercher un ustensile"
+                  />
+                </button>
+                <div
+                  class="dropdown-menu"
+                  style="width: 170px; height: 69px; background: #ed6454"
+                >
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
+                  <a href="#" class="dropdown-item"></a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- SECOND CARD -->
-        <div class="col-12 col-lg-4 card-section">
-          <div class="card mb-4 mb-lg-5 border-primary shadow">
-            <div class="bg-light rounded-top" style="height: 180px"></div>
-            <div class="card-body">
-              <div class="card-top">
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="card-title">Limonade de Coco</h6>
+        <!-- CARDS SECTION -->
+        <section>
+          <div class="row card-section">
+            <!-- FIRST CARD -->
+            <!-- <div class="col-12 col-lg-4 card-section">
+              <div class="card mb-4 mb-lg-5 border-primary shadow">
+                <div class="bg-light rounded-top" style="height: 180px"></div>
+                <div class="card-body">
+                  <div class="row my-auto">
+                    <div class="col-6">
+                      <h6 class="card-title">Limonade de Coco</h6>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
+                          fill="black"
+                        />
+                      </svg>
+                      <p class="mb-2 my-middle">10 min</p>
+                    </div>
                   </div>
-                  <div class="col-6 d-flex justify-content-end">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <p class="mb-2">10 min</p>
+                  <div class="row">
+                    <div class="col-6">
+                      <p class="m-0">
+                        <small><strong>Lait de coco: </strong>400ml</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Jus de citron: </strong>2</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Crème de coco: </strong>4 cuillères</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Sucre: </strong>20g</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Glaçons: </strong>2</small>
+                      </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="card-text">
+                        <small>
+                          Mettre les glaçons à votre goût dans le blender, ajouter
+                          le lait, la crème de coco, le jus de 2 citrons et le
+                          sucre. Mixer jusqu'à avoir la consistence désirée.
+                        </small>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-6">
-                  <p class="m-0">
-                    <small><strong>Lait de coco: </strong>400ml</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Jus de citron: </strong>2</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Crème de coco: </strong>4 cuillères</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Sucre: </strong>20g</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Glaçons: </strong>2</small>
-                  </p>
-                </div>
-                <div class="col-6">
-                  <p class="card-text">
-                    <small>
-                      Mettre les glaçons à votre goût dans le blender, ajouter
-                      le lait, la crème de coco, le jus de 2 citrons et le
-                      sucre. Mixer jusqu'à avoir la consistence désirée.
-                    </small>
-                  </p>
+            </div> -->
+            <!-- SECOND CARD -->
+            <!-- <div class="col-12 col-lg-4 card-section">
+              <div class="card mb-4 mb-lg-5 border-primary shadow">
+                <div class="bg-light rounded-top" style="height: 180px"></div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="card-title">Limonade de Coco</h6>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
+                          fill="black"
+                        />
+                      </svg>
+                      <p class="mb-2">10 min</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <p class="m-0">
+                        <small><strong>Lait de coco: </strong>400ml</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Jus de citron: </strong>2</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Crème de coco: </strong>4 cuillères</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Sucre: </strong>20g</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Glaçons: </strong>2</small>
+                      </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="card-text">
+                        <small>
+                          Mettre les glaçons à votre goût dans le blender, ajouter
+                          le lait, la crème de coco, le jus de 2 citrons et le
+                          sucre. Mixer jusqu'à avoir la consistence désirée.
+                        </small>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+            <!-- THIRD CARD -->
+            <!-- <div class="col-12 col-lg-4 card-section">
+              <div class="card mb-4 mb-lg-5 border-primary shadow">
+                <div class="bg-light rounded-top" style="height: 180px"></div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="card-title">Limonade de Coco</h6>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
+                          fill="black"
+                        />
+                      </svg>
+                      <p class="mb-2">10 min</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <p class="m-0">
+                        <small><strong>Lait de coco: </strong>400ml</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Jus de citron: </strong>2</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Crème de coco: </strong>4 cuillères</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Sucre: </strong>20g</small>
+                      </p>
+                      <p class="m-0">
+                        <small><strong>Glaçons: </strong>2</small>
+                      </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="card-text">
+                        <small>
+                          Mettre les glaçons à votre goût dans le blender, ajouter
+                          le lait, la crème de coco, le jus de 2 citrons et le
+                          sucre. Mixer jusqu'à avoir la consistence désirée.
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
           </div>
-        </div>
-
-        <!-- THIRD CARD -->
-        <div class="col-12 col-lg-4 card-section">
-          <div class="card mb-4 mb-lg-5 border-primary shadow">
-            <div class="bg-light rounded-top" style="height: 180px"></div>
-            <div class="card-body">
-              <div class="card-top">
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="card-title">Limonade de Coco</h6>
-                  </div>
-                  <div class="col-6 d-flex justify-content-end">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                        fill="black"
-                      />
-                    </svg>
-                    <p class="mb-2">10 min</p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <p class="m-0">
-                    <small><strong>Lait de coco: </strong>400ml</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Jus de citron: </strong>2</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Crème de coco: </strong>4 cuillères</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Sucre: </strong>20g</small>
-                  </p>
-                  <p class="m-0">
-                    <small><strong>Glaçons: </strong>2</small>
-                  </p>
-                </div>
-                <div class="col-6">
-                  <p class="card-text">
-                    <small>
-                      Mettre les glaçons à votre goût dans le blender, ajouter
-                      le lait, la crème de coco, le jus de 2 citrons et le
-                      sucre. Mixer jusqu'à avoir la consistence désirée.
-                    </small>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
 
     <script
@@ -414,6 +418,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="./js/factories/card.js"></script> -->
+    <script src="./js/card.js"></script>
   </body>
 </html>
