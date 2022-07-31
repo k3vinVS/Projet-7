@@ -1,21 +1,13 @@
 // DOM ELEMENTS
+const form = document.querySelector('form');
 const search = document.querySelector('.search');
-const cardSection = document.querySelector('.card-section');
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
 const inputSearch = document.querySelectorAll('.input-search');
 const closeTag = document.querySelectorAll('.close-tag');
+const cardSection = document.querySelector('.card-section');
 let recipes = [];
 
-// FETCH
-async function fetchMeals() {
-  await fetch('./recipes.json')
-    .then((res) => res.json())
-    .then((data) => (recipes = data.recipes))
-    .catch((err) => console.log(err))
-  // console.log(recipes);
-}
-fetchMeals();
 
 // SORT TAGS HTML
 function showSortTag() {
@@ -40,10 +32,6 @@ tagSection.addEventListener('click', () => {
 
 
 // CARD FACTORY HMTL
-function showRecipeCard() {
-  cardSection.innerHTML += recipeCardDOM();
-}
-showRecipeCard();
 
 
 // SORT TAGS
@@ -73,62 +61,61 @@ function sortTag() {
 }
 
 // CARD FACTORY
-function recipeCardDOM() {
-  let cardHtml = `
-    <div class="card mb-4 mb-lg-5 border-0 shadow">
-        <div class="card-img"></div>
-        <div class="card-body rounded-bottom">
-          <div class="card-top">
+function recipesDisplay() {
+  cardSection.innerHTML = recipes.map((recipe) =>  
+    `
+    <div class="col-12 col-lg-4">
+      <div class="card mb-4 mb-lg-5 border-0 shadow">
+          <div class="card-img-top"></div>
+          <div class="card-body rounded-bottom">
+            <div class="card-top">
+              <div class="row">
+                <div class="col-6">
+                  <h6 class="card-title">${recipe.name}</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
+                      fill="black"
+                    />
+                  </svg>
+                  <p class="mb-2 ml-1">${recipe.time} min</p>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-6">
-                <h6 class="card-title">Limonade de coco</h6>
+                <p class="m-0"><small><strong>${recipe.ingredients}: </strong>400ml</small></p>
+                <p class="m-0"><small><strong>Jus de citron: </strong>2</small></p>
+                <p class="m-0"><small><strong>Crème de coco: </strong>4 cuillères</small></p>
+                <p class="m-0"><small><strong>Sucre: </strong>20g</small></p>
+                <p class="m-0"><small><strong>Glaçons: </strong>2</small></p>
               </div>
-              <div class="col-6 d-flex justify-content-end">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                    fill="black"
-                  />
-                </svg>
-                <p class="mb-2">10 min</p>
+              <div class="col-6 text-description text-truncate">
+                <p class="card-text text-break">
+                    ${recipe.description}
+                </p>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <p class="m-0"><small><strong>Lait de coco: </strong>400ml</small></p>
-              <p class="m-0"><small><strong>Jus de citron: </strong>2</small></p>
-              <p class="m-0"><small><strong>Crème de coco: </strong>4 cuillères</small></p>
-              <p class="m-0"><small><strong>Sucre: </strong>20g</small></p>
-              <p class="m-0"><small><strong>Glaçons: </strong>2</small></p>
-            </div>
-            <div class="col-6">
-              <p class="card-text">
-                <small>
-                  Mettre les glaçons à votre goût dans le blender, ajouter
-                  le lait, la crème de coco, le jus de 2 citrons et le
-                  sucre. Mixer jusqu'à avoir la consistence désirée.
-                </small>
-              </p>
             </div>
           </div>
         </div>
-      </div>
-    `;
-  return cardHtml;
+    </div>
+    `).join("");
 }
 
 // DROPDOWN
 const dropdownList = document.querySelectorAll('.btn');
 const btnText = document.querySelectorAll('.search-text-button');
-console.log(btnText);
-// console.log(dropdownList[0]);
+
+// console.log(btnText);
+
 for (let i = 0; i < dropdownList.length; i++) {
   dropdownList[i].addEventListener('click', (e) => {
 
@@ -169,6 +156,26 @@ for (let i = 0; i < dropdownList.length; i++) {
         placeholder="Rechercher un ingrédient"
       />
       `;
+    } else if (document.querySelector('.btn-group').contains('Rechercher')) {
+      console.log(e);
+      // btnText[e].remove();
+      // inputSearch[e].style.display = 'inline-flex';
+      // inputSearch[e].style.border = 'none';
     }
   })
 }
+
+
+// FETCH
+async function fetchMeals() {
+  await fetch('./recipes.json')
+    .then((res) => res.json())
+    .then((data) => (recipes = data.recipes))
+    .catch((err) => console.log(err))
+  console.log(recipes);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchMeals().then(() => recipesDisplay());
+})

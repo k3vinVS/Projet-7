@@ -28,6 +28,14 @@ header h1 {
 }
 
 //---------------------- SORT SECTION ----------------------
+.tag {
+  width: 107px;
+  height: 37px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.8px;
+}
+
 .close-tag {
   cursor: pointer;
 }
@@ -73,10 +81,16 @@ header h1 {
 //---------------------- CARD SECTION ----------------------
 .card-img {
   height: 180px;
-  border-radius: 5px 5px 0 0;
+  // border-radius: 5px 5px 0 0;
   background-color: #c7bebe;
 }
 
 .card-body {
   background-color: #e7e7e7;
+}
+
+.text-description {
+  height: 109px;
+  font-size: 12px;
+  line-height: 12px;
 }
