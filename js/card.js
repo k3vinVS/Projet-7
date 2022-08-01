@@ -100,7 +100,7 @@ function recipesDisplay() {
 
     return `
     <div class="col-12 col-lg-4">
-      <div class="card mb-4 mb-lg-5 border-0 shadow">
+      <div class="card mb-4 mb-lg-5 mr-0 border-0 shadow">
           <div class="card-img"></div>
           <div class="card-body rounded-bottom">
             <div class="card-top">
@@ -130,7 +130,7 @@ function recipesDisplay() {
                 <ul class='text-ingredients pl-0'>${ingredientsArray.join('')}</ul>
               </div>
               <div class="col-6 pl-0 text-description">
-                <p class="card-text text-break">
+                <p class="card-text">
                     ${recipe.description}
                 </p>
               </div>

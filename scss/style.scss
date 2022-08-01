@@ -80,6 +80,10 @@ h2 {
 }
 
 //---------------------- CARD SECTION ----------------------
+.card {
+  width: 380px;
+  height: 364px;
+}
 .card-img {
   height: 180px;
   border-radius: 5px 5px 0 0;
@@ -109,4 +113,21 @@ h2 {
   height: 109px;
   font-size: 12px;
   line-height: 12px;
+}
+
+.card-text {
+  max-height: 109px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//---------------------- MEDIA QUERIES ---------------------
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1240px;
+    padding: 0;
+  }
 }
