@@ -1,13 +1,16 @@
 // DOM ELEMENTS
 const form = document.querySelector('form');
+const inputForm = document.getElementById('search-input');
 const search = document.querySelector('.search');
+const result = document.getElementById('result');
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
-const inputSearch = document.querySelectorAll('.input-search');
+const inputSearchTag = document.querySelectorAll('.input-search');
 const closeTag = document.querySelectorAll('.close-tag');
 const cardSection = document.querySelector('.card-section');
 let recipes = [];
 
+// console.log(result);
 
 // SORT TAGS HTML
 function showSortTag() {
@@ -62,18 +65,50 @@ function sortTag() {
 
 // CARD FACTORY
 function recipesDisplay() {
-  cardSection.innerHTML = recipes.map((recipe) =>  
-    `
+  if (recipes === null) {
+    result.innerHTML = `<h2 class='text-center'>Aucun résultat</h2>`;
+  }
+
+  cardSection.innerHTML = recipes.map((recipe) => {
+    let ingredientsArray = [];
+    let ingredients = recipe.ingredients;
+
+    for (let i = 0; i < ingredients.length; i++) {
+      let ingredient = recipe.ingredients[i].ingredient;
+      let quantity = recipe.ingredients[i].quantity;
+      let unit = recipe.ingredients[i].unit;
+
+      // console.log(ingredient);
+      // if (ingredients) {
+      //   ingredientsArray.push(`${ingredient}: ${quantity}${unit}`);
+      // }
+      // if(!unit){
+      //   ingredientsArray.push(`${ingredient}: ${quantity}`);
+      // }
+      // if(!quantity){
+      //   ingredientsArray.push(`${ingredient}`);
+      // }
+      if (!quantity && !unit) {
+        ingredientsArray.push(`<dd>${ingredient}</dd>`);
+      } else if (!unit) {
+        ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity}</dd>`);
+      } else {
+        ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity} ${unit}</dd>`);
+      }
+    }
+    // console.log(ingredientsArray);
+
+    return `
     <div class="col-12 col-lg-4">
       <div class="card mb-4 mb-lg-5 border-0 shadow">
-          <div class="card-img-top"></div>
+          <div class="card-img"></div>
           <div class="card-body rounded-bottom">
             <div class="card-top">
-              <div class="row">
-                <div class="col-6">
+              <div class="row mb-1">
+                <div class="col-8">
                   <h6 class="card-title">${recipe.name}</h6>
                 </div>
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-4 d-flex justify-content-end">
                   <svg
                     width="20"
                     height="20"
@@ -91,14 +126,10 @@ function recipesDisplay() {
               </div>
             </div>
             <div class="row">
-              <div class="col-6">
-                <p class="m-0"><small><strong>${recipe.ingredients}: </strong>400ml</small></p>
-                <p class="m-0"><small><strong>Jus de citron: </strong>2</small></p>
-                <p class="m-0"><small><strong>Crème de coco: </strong>4 cuillères</small></p>
-                <p class="m-0"><small><strong>Sucre: </strong>20g</small></p>
-                <p class="m-0"><small><strong>Glaçons: </strong>2</small></p>
+              <div class="col-6 pr-0">
+                <ul class='text-ingredients pl-0'>${ingredientsArray.join('')}</ul>
               </div>
-              <div class="col-6 text-description text-truncate">
+              <div class="col-6 pl-0 text-description">
                 <p class="card-text text-break">
                     ${recipe.description}
                 </p>
@@ -107,7 +138,9 @@ function recipesDisplay() {
           </div>
         </div>
     </div>
-    `).join("");
+    `
+  }
+  ).join("");
 }
 
 // DROPDOWN
@@ -120,8 +153,8 @@ for (let i = 0; i < dropdownList.length; i++) {
   dropdownList[i].addEventListener('click', (e) => {
 
     btnText[i].remove();
-    inputSearch[i].style.display = 'inline-flex';
-    inputSearch[i].style.border = 'none';
+    inputSearchTag[i].style.display = 'inline-flex';
+    inputSearchTag[i].style.border = 'none';
 
     // console.log(e.target);
 
@@ -159,8 +192,8 @@ for (let i = 0; i < dropdownList.length; i++) {
     } else if (document.querySelector('.btn-group').contains('Rechercher')) {
       console.log(e);
       // btnText[e].remove();
-      // inputSearch[e].style.display = 'inline-flex';
-      // inputSearch[e].style.border = 'none';
+      // inputSearchTag[e].style.display = 'inline-flex';
+      // inputSearchTag[e].style.border = 'none';
     }
   })
 }
@@ -172,8 +205,12 @@ async function fetchMeals() {
     .then((res) => res.json())
     .then((data) => (recipes = data.recipes))
     .catch((err) => console.log(err))
-  console.log(recipes);
+  // console.log(recipes);
 }
+
+inputForm.addEventListener('input', (e) => {
+  fetchMeals(e.target.value).then(() => recipesDisplay());
+})
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();

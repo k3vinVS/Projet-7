@@ -3,7 +3,8 @@
 }
 
 //---------------------- HEADER ----------------------
-header h1 {
+header h1,
+h2 {
   color: #d04f4f;
   font-size: 36px;
   line-height: 46.87px;
@@ -81,12 +82,27 @@ header h1 {
 //---------------------- CARD SECTION ----------------------
 .card-img {
   height: 180px;
-  // border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
   background-color: #c7bebe;
 }
 
 .card-body {
   background-color: #e7e7e7;
+}
+
+.text-ingredients {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
+}
+
+.text-ingredients dd {
+  margin: 0;
+  font-weight: 400;
+}
+
+.text-ingredients dd strong {
+  font-weight: 700;
 }
 
 .text-description {
