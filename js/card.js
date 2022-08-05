@@ -12,7 +12,27 @@ let recipes = [];
 
 // console.log(result);
 
-// SORT TAGS HTML
+// ------------------------------ FETCH ------------------------------
+async function fetchMeals() {
+  await fetch('./recipes.json')
+    .then((res) => res.json())
+    .then((data) => (recipes = data.recipes))
+    .catch((err) => console.log(err))
+  // console.log(recipes);
+}
+
+inputForm.addEventListener('input', (e) => {
+  fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
+})
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchMeals().then(() => recipesDisplay());
+})
+
+
+
+// ------------------------------ SORT TAGS HTML ------------------------------
 function showSortTag() {
   tagSection.innerHTML += sortTag();
 }
@@ -33,11 +53,7 @@ tagSection.addEventListener('click', () => {
 // }
 
 
-
-// CARD FACTORY HMTL
-
-
-// SORT TAGS
+// ------------------------------ SORT TAGS ------------------------------
 function sortTag() {
   let divTagHtml = `
     <div
@@ -63,7 +79,7 @@ function sortTag() {
   return divTagHtml;
 }
 
-// CARD FACTORY
+// ------------------------------ CARD FACTORY ------------------------------
 function recipesDisplay() {
   if (recipes === null) {
     result.innerHTML = `<h2 class='text-center'>Aucun résultat</h2>`;
@@ -78,22 +94,12 @@ function recipesDisplay() {
       let quantity = recipe.ingredients[i].quantity;
       let unit = recipe.ingredients[i].unit;
 
-      // console.log(ingredient);
-      // if (ingredients) {
-      //   ingredientsArray.push(`${ingredient}: ${quantity}${unit}`);
-      // }
-      // if(!unit){
-      //   ingredientsArray.push(`${ingredient}: ${quantity}`);
-      // }
-      // if(!quantity){
-      //   ingredientsArray.push(`${ingredient}`);
-      // }
       if (!quantity && !unit) {
-        ingredientsArray.push(`<dd>${ingredient}</dd>`);
+        ingredientsArray.push(`<dd><strong>${ingredient}</strong></dd>`);
       } else if (!unit) {
         ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity}</dd>`);
       } else {
-        ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity} ${unit}</dd>`);
+        ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity}${unit}</dd>`);
       }
     }
     // console.log(ingredientsArray);
@@ -143,76 +149,85 @@ function recipesDisplay() {
   ).join("");
 }
 
-// DROPDOWN
+// ------------------------------ DROPDOWN ------------------------------
 const dropdownList = document.querySelectorAll('.btn');
 const btnText = document.querySelectorAll('.search-text-button');
-
-// console.log(btnText);
-
-for (let i = 0; i < dropdownList.length; i++) {
-  dropdownList[i].addEventListener('click', (e) => {
-
-    btnText[i].remove();
-    inputSearchTag[i].style.display = 'inline-flex';
-    inputSearchTag[i].style.border = 'none';
-
-    // console.log(e.target);
+const dropdownMenu = document.querySelector('.dropdown-menu');
+const dropdownItem = document.querySelector('.dropdown-item');
 
 
+function dropdown() {
+  dropdownItem.innerHTML = recipes.map((recipe) => {
+    let ingredientsArray = [];
+    let ingredients = recipe.ingredients;
 
-    // dropdownList[0].innerHTML = `
-    //         <button
-    //             type="button"
-    //             class="btn btn-primary dropdown-toggle d-inline border-0"
-    //             data-toggle="dropdown"
-    //             aria-haspopup="true"
-    //             aria-expanded="false"
-    //             style="height: 69px; font-size: 18px;"
-    //           >
-    //           <p class="d-inline-flex" style="opacity: 0.5; margin: 0">Rechercher un ingrédient</p>
-    //         </button>
-    //           <div
-    //             class="dropdown-menu bg-primary"
-    //           >
-    //             <a href="#" class="dropdown-item d-flex"></a>
-    //             <a href="#" class="dropdown-item"></a>
-    //             <a href="#" class="dropdown-item"></a>
-    //           </div>
-    //       `;
-  })
-  window.addEventListener('click', (e) => {
-    if (!document.querySelector('.btn-group').contains(e.target)) {
-      document.querySelector('.btn').innerHTML = `
-      <p class="search-text-button d-inline-flex">Ingredients</p>
-      <input
-        class="input-search"
-        placeholder="Rechercher un ingrédient"
-      />
-      `;
-    } else if (document.querySelector('.btn-group').contains('Rechercher')) {
-      console.log(e);
-      // btnText[e].remove();
-      // inputSearchTag[e].style.display = 'inline-flex';
-      // inputSearchTag[e].style.border = 'none';
+    for (let i = 0; i < ingredients.length; i++) {
+      let ingredient = recipe.ingredients[i].ingredient;
+      // let myArray = [...ingredient, ...ingredient];
+      // let unique = [...new Set(myArray)];
+
+      // console.log(ingredient);
+      if(ingredients && focus){
+        dropdownItem.style.background = 'none';
+        ingredientsArray.push(`<dd class='col-4 d-inline-flex ingredient-item'>${ingredient}</dd>`);
+      }
+
+      // if (ingredients) {
+      //   ingredientsArray.push(`<dd class='col-4 d-inline-flex ingredient-item'>${ingredient}</dd>`);        
+      // }
     }
-  })
+    return `
+    <div>${ingredientsArray.join('')}</div>
+    `
+  }).join('');
+
+  for (let i = 0; i < dropdownList.length; i++) {
+
+    dropdownList[i].addEventListener('click', (e) => {
+      fetchMeals().then(() => dropdown());
+      let ingredients = recipes;
+      let ingredient = recipes.ingredients;
+
+      btnText[i].remove();
+      inputSearchTag[i].style.display = 'inline-flex';
+      inputSearchTag[i].style.border = 'none';
+
+      // console.log(e.target);
+
+
+
+      // dropdownList[0].innerHTML = `
+      //         <button
+      //             type="button"
+      //             class="btn btn-primary dropdown-toggle d-inline border-0"
+      //             data-toggle="dropdown"
+      //             aria-haspopup="true"
+      //             aria-expanded="false"
+      //             style="height: 69px; font-size: 18px;"
+      //           >
+      //           <p class="d-inline-flex" style="opacity: 0.5; margin: 0">Rechercher un ingrédient</p>
+      //         </button>
+      //           <div
+      //             class="dropdown-menu bg-primary"
+      //           >
+      //             <a href="#" class="dropdown-item d-flex"></a>
+      //             <a href="#" class="dropdown-item"></a>
+      //             <a href="#" class="dropdown-item"></a>
+      //           </div>
+      //       `;
+    })
+    window.addEventListener('click', (e) => {
+      if (!document.querySelector('.btn-group').contains(e.target)) {
+        document.querySelector('.btn').innerHTML = `
+        <p class="search-text-button d-inline-flex">Ingredients</p>
+        <input
+          class="input-search"
+          placeholder="Rechercher un ingrédient"
+        />
+        `;
+      }
+    })
+  }
 }
+dropdown();
 
-
-// FETCH
-async function fetchMeals() {
-  await fetch('./recipes.json')
-    .then((res) => res.json())
-    .then((data) => (recipes = data.recipes))
-    .catch((err) => console.log(err))
-  // console.log(recipes);
-}
-
-inputForm.addEventListener('input', (e) => {
-  fetchMeals(e.target.value).then(() => recipesDisplay());
-})
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  fetchMeals().then(() => recipesDisplay());
-})

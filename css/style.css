@@ -72,14 +72,36 @@ h2 {
 
 .dropdown-menu {
   min-width: 170px;
+  min-height: 69px;
   width: auto;
-  height: 69px;
+  height: auto;
   border-radius: 0 0 5px 5px;
 }
 
+.dropdown-item {
+  min-width: 170px;
+  min-height: 69px;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden; /* A modifier une fois le tri des doublons effectue */
+}
+
+.ingredient-item {
+  font-size: 18px;
+  line-height: 21.6px;
+  padding-right: 10px;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card {
-  width: 380px;
-  height: 364px;
+  max-width: 380px;
+  max-height: 364px;
 }
 
 .card-img {
@@ -89,6 +111,7 @@ h2 {
 }
 
 .card-body {
+  height: 186px;
   background-color: #e7e7e7;
 }
 
