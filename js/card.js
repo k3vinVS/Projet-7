@@ -1,7 +1,7 @@
 // DOM ELEMENTS
 const form = document.querySelector('form');
 const inputForm = document.getElementById('search-input');
-const search = document.querySelector('.search');
+const searchButton = document.querySelector('.search');
 const result = document.getElementById('result');
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
@@ -10,7 +10,7 @@ const closeTag = document.querySelectorAll('.close-tag');
 const cardSection = document.querySelector('.card-section');
 let recipes = [];
 
-// console.log(result);
+// console.log(recipes);
 
 // ------------------------------ FETCH ------------------------------
 async function fetchMeals() {
@@ -21,11 +21,19 @@ async function fetchMeals() {
   // console.log(recipes);
 }
 
+// INPUT SEARCH ------------------------------
 inputForm.addEventListener('input', (e) => {
   fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
 })
 
+// SEARCH FORM ------------------------------
 form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchMeals().then(() => recipesDisplay());
+})
+
+// INPUT SEARCH BUTTON ------------------------------
+searchButton.addEventListener('click', (e) => {
   e.preventDefault();
   fetchMeals().then(() => recipesDisplay());
 })
@@ -39,7 +47,7 @@ function showSortTag() {
 showSortTag();
 
 tagSection.addEventListener('click', () => {
-  console.log('click');
+  // console.log('click');
 })
 
 // for (let i = 0; i < closeTag.length; i++) {
@@ -81,6 +89,17 @@ function sortTag() {
 
 // ------------------------------ CARD FACTORY ------------------------------
 function recipesDisplay() {
+
+  let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
+  let ingredientInIngredients = allIngredients.reduce((acc, curVal)=> acc.concat(curVal.ingredient), []);
+  const filtreIngredients = ingredientInIngredients.filter((ele, pos) => ingredientInIngredients.indexOf(ele) == pos);
+
+  // console.log(allIngredients);
+  // console.log(ingredientInIngredients);
+  console.log(filtreIngredients);
+
+
+
   if (recipes === null) {
     result.innerHTML = `<h2 class='text-center'>Aucun résultat</h2>`;
   }
@@ -155,19 +174,28 @@ const btnText = document.querySelectorAll('.search-text-button');
 const dropdownMenu = document.querySelector('.dropdown-menu');
 const dropdownItem = document.querySelector('.dropdown-item');
 
-
 function dropdown() {
   dropdownItem.innerHTML = recipes.map((recipe) => {
     let ingredientsArray = [];
     let ingredients = recipe.ingredients;
+    // let ingredientArray = Object.values(ingredients).flat();
+    // const ingredientArray = ingredients.reduce((acc, curr) => [...acc, curr.ingredient], []);
+
+    // for (Object of ingredientArray){
+    //   // console.log(Object);
+    // }
+    // console.log(ingredients);
+
 
     for (let i = 0; i < ingredients.length; i++) {
-      let ingredient = recipe.ingredients[i].ingredient;
-      // let myArray = [...ingredient, ...ingredient];
-      // let unique = [...new Set(myArray)];
+      const ingredient = recipe.ingredients[i].ingredient;
+      let ingredientArray = [];
+      ingredientArray.push(ingredient);
 
       // console.log(ingredient);
-      if(ingredients && focus){
+
+      // console.log(ingredient);
+      if (ingredients && focus) {
         dropdownItem.style.background = 'none';
         ingredientsArray.push(`<dd class='col-4 d-inline-flex ingredient-item'>${ingredient}</dd>`);
       }
@@ -185,8 +213,8 @@ function dropdown() {
 
     dropdownList[i].addEventListener('click', (e) => {
       fetchMeals().then(() => dropdown());
-      let ingredients = recipes;
-      let ingredient = recipes.ingredients;
+      // let ingredients = recipes;
+      // let ingredient = recipes.ingredients;
 
       btnText[i].remove();
       inputSearchTag[i].style.display = 'inline-flex';

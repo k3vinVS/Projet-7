@@ -81,7 +81,7 @@ h2 {
 .dropdown-item {
   min-width: 170px;
   min-height: 69px;
-  max-height: 50vh;
+  max-height: 48vh;
   width: auto;
   height: auto;
   border-radius: 0 0 5px 5px;
@@ -94,9 +94,7 @@ h2 {
   padding-right: 10px;
   color: white;
   cursor: pointer;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card {
