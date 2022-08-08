@@ -1,102 +1,20 @@
 // DOM ELEMENTS
-const form = document.querySelector('form');
-const inputForm = document.getElementById('search-input');
-const searchButton = document.querySelector('.search');
-const result = document.getElementById('result');
-const tagSection = document.querySelector('.tag-section');
-const tagEl = document.querySelectorAll('.tag');
-const inputSearchTag = document.querySelectorAll('.input-search');
-const closeTag = document.querySelectorAll('.close-tag');
 const cardSection = document.querySelector('.card-section');
 let recipes = [];
 
-// console.log(recipes);
-
-// ------------------------------ FETCH ------------------------------
-async function fetchMeals() {
-  await fetch('./recipes.json')
-    .then((res) => res.json())
-    .then((data) => (recipes = data.recipes))
-    .catch((err) => console.log(err))
-  // console.log(recipes);
-}
-
-// INPUT SEARCH ------------------------------
-inputForm.addEventListener('input', (e) => {
-  fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
-})
-
-// SEARCH FORM ------------------------------
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  fetchMeals().then(() => recipesDisplay());
-})
-
-// INPUT SEARCH BUTTON ------------------------------
-searchButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetchMeals().then(() => recipesDisplay());
-})
-
-
-
-// ------------------------------ SORT TAGS HTML ------------------------------
-function showSortTag() {
-  tagSection.innerHTML += sortTag();
-}
-showSortTag();
-
-tagSection.addEventListener('click', () => {
-  // console.log('click');
-})
-
-// for (let i = 0; i < closeTag.length; i++) {
-//   let newIndex = i;
-//   console.log('click');
-
-//   closeTag[newIndex].addEventListener('click', (e) => {
-//     // closeTag.style.display = 'none';
-//   })
-
-// }
-
-
-// ------------------------------ SORT TAGS ------------------------------
-function sortTag() {
-  let divTagHtml = `
-    <div
-            class="col-2 tag bg-primary text-center d-inline-flex justify-content-around align-items-center p-2 text-white rounded"
-            style="height: 37px; font-size: 14px"
-          >
-            Coco
-            <svg
-              class="align-text-top close-tag"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-    `;
-  return divTagHtml;
-}
+// console.log(recipes)
 
 // ------------------------------ CARD FACTORY ------------------------------
 function recipesDisplay() {
 
   let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
-  let ingredientInIngredients = allIngredients.reduce((acc, curVal)=> acc.concat(curVal.ingredient), []);
+  let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
   const filtreIngredients = ingredientInIngredients.filter((ele, pos) => ingredientInIngredients.indexOf(ele) == pos);
+
 
   // console.log(allIngredients);
   // console.log(ingredientInIngredients);
-  console.log(filtreIngredients);
+  // console.log(filtreIngredients);
 
 
 
@@ -167,95 +85,3 @@ function recipesDisplay() {
   }
   ).join("");
 }
-
-// ------------------------------ DROPDOWN ------------------------------
-const dropdownList = document.querySelectorAll('.btn');
-const btnText = document.querySelectorAll('.search-text-button');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-const dropdownItem = document.querySelector('.dropdown-item');
-
-function dropdown() {
-  dropdownItem.innerHTML = recipes.map((recipe) => {
-    let ingredientsArray = [];
-    let ingredients = recipe.ingredients;
-    // let ingredientArray = Object.values(ingredients).flat();
-    // const ingredientArray = ingredients.reduce((acc, curr) => [...acc, curr.ingredient], []);
-
-    // for (Object of ingredientArray){
-    //   // console.log(Object);
-    // }
-    // console.log(ingredients);
-
-
-    for (let i = 0; i < ingredients.length; i++) {
-      const ingredient = recipe.ingredients[i].ingredient;
-      let ingredientArray = [];
-      ingredientArray.push(ingredient);
-
-      // console.log(ingredient);
-
-      // console.log(ingredient);
-      if (ingredients && focus) {
-        dropdownItem.style.background = 'none';
-        ingredientsArray.push(`<dd class='col-4 d-inline-flex ingredient-item'>${ingredient}</dd>`);
-      }
-
-      // if (ingredients) {
-      //   ingredientsArray.push(`<dd class='col-4 d-inline-flex ingredient-item'>${ingredient}</dd>`);        
-      // }
-    }
-    return `
-    <div>${ingredientsArray.join('')}</div>
-    `
-  }).join('');
-
-  for (let i = 0; i < dropdownList.length; i++) {
-
-    dropdownList[i].addEventListener('click', (e) => {
-      fetchMeals().then(() => dropdown());
-      // let ingredients = recipes;
-      // let ingredient = recipes.ingredients;
-
-      btnText[i].remove();
-      inputSearchTag[i].style.display = 'inline-flex';
-      inputSearchTag[i].style.border = 'none';
-
-      // console.log(e.target);
-
-
-
-      // dropdownList[0].innerHTML = `
-      //         <button
-      //             type="button"
-      //             class="btn btn-primary dropdown-toggle d-inline border-0"
-      //             data-toggle="dropdown"
-      //             aria-haspopup="true"
-      //             aria-expanded="false"
-      //             style="height: 69px; font-size: 18px;"
-      //           >
-      //           <p class="d-inline-flex" style="opacity: 0.5; margin: 0">Rechercher un ingrédient</p>
-      //         </button>
-      //           <div
-      //             class="dropdown-menu bg-primary"
-      //           >
-      //             <a href="#" class="dropdown-item d-flex"></a>
-      //             <a href="#" class="dropdown-item"></a>
-      //             <a href="#" class="dropdown-item"></a>
-      //           </div>
-      //       `;
-    })
-    window.addEventListener('click', (e) => {
-      if (!document.querySelector('.btn-group').contains(e.target)) {
-        document.querySelector('.btn').innerHTML = `
-        <p class="search-text-button d-inline-flex">Ingredients</p>
-        <input
-          class="input-search"
-          placeholder="Rechercher un ingrédient"
-        />
-        `;
-      }
-    })
-  }
-}
-dropdown();
-

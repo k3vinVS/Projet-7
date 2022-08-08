@@ -63,7 +63,7 @@ h2 {
 }
 
 .input-search::placeholder {
-  opacity: 0.5;
+  opacity: 0.7;
   font-weight: 700;
   font-size: 18px;
   line-height: 21.6px;
