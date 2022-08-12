@@ -2,21 +2,16 @@
 const cardSection = document.querySelector('.card-section');
 let recipes = [];
 
-// console.log(recipes)
 
 // ------------------------------ CARD FACTORY ------------------------------
 function recipesDisplay() {
-
   let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
   let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
   const filtreIngredients = ingredientInIngredients.filter((ele, pos) => ingredientInIngredients.indexOf(ele) == pos);
 
-
   // console.log(allIngredients);
   // console.log(ingredientInIngredients);
   // console.log(filtreIngredients);
-
-
 
   if (recipes === null) {
     result.innerHTML = `<h2 class='text-center'>Aucun résultat</h2>`;
@@ -84,4 +79,4 @@ function recipesDisplay() {
     `
   }
   ).join("");
-}
+};

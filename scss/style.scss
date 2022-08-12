@@ -75,28 +75,40 @@ h2 {
 .dropdown-menu {
   min-width: 170px;
   min-height: 69px;
+  // max-width: 48vw;
   width: auto;
   height: auto;
   border-radius: 0 0 5px 5px;
+  margin-top: -2px;
 }
 
 .dropdown-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   min-width: 170px;
   min-height: 69px;
-  max-height: 48vh;
   width: auto;
   height: auto;
-  border-radius: 0 0 5px 5px;
-  overflow: hidden; /* A modifier une fois le tri des doublons effectue */
+  border-radius: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  // border-radius: 0 0 5px 5px;
+  // max-height: 48vh;
+  // overflow: hidden; /* A modifier une fois le tri des doublons effectue */
+}
+
+.dropdown-item:hover{
+  background: none;
 }
 
 .ingredient-item {
   font-size: 18px;
   line-height: 21.6px;
-  padding-right: 10px;
   color: white;
   cursor: pointer;
-  overflow: hidden;
+  // padding-right: 10px;
+  // overflow: hidden;
   // white-space: nowrap;
   // text-overflow: ellipsis;
 }
