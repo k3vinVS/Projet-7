@@ -3,40 +3,59 @@ const dropdownBtn = document.querySelectorAll('.sort-button');
 const textBtn = document.querySelectorAll('.search-text-button');
 const inputSearch = document.querySelectorAll('.input-search');
 const dropdownMenu = document.querySelector('.dropdown-menu');
-const dropdownItem = document.querySelector('.dropdown-item');
+const dropdownItem = document.querySelectorAll('.dropdown-item');
 
-dropdownBtn[0].addEventListener('click', (e) => {
-    e.preventDefault();
-    fetchMeals().then(() => dropdown());
+// SORT BUTTONS CHOICE ------------------------------
+dropdownBtn.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchMeals().then(() => dropdown());
+    })
 })
 
 
 function dropdown() {
     // SORT INGREDIENTS ------------------------------
-    // let ingredients = recipes.ingredients;
     let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
     let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
-    // let filtreIngredients = ingredientInIngredients.filter((ele, pos) => ingredientInIngredients.indexOf(ele) == pos).join(' ');
-    let IngredientsWithNoDouble = new Set (ingredientInIngredients);
-    // let ingredientsArray = [];
-    // console.log(allIngredients);
+    let IngredientsWithNoDouble = new Set(ingredientInIngredients);
+
     // console.log(ingredientInIngredients);
-    // console.log(filtreIngredients);
-    // console.log(IngredientsWithNoDouble);
-    for(let element of IngredientsWithNoDouble){
-        let ingredients = [element];
-        console.log(ingredients);
-        // ingredients.push(`<dd class='col d-flex ingredient-item'>${element}</dd>`);
-        dropdownItem.innerHTML += `<dd class='col-4 ingredient-item'>${ingredients}</dd>`;
+    for (let ingredient of IngredientsWithNoDouble) {
+        dropdownItem[0].innerHTML += `<dd class='col ingredient-item'>${ingredient}</dd>`;
+        // console.log(ingredient);
     }
 
-    
-    // dropdownMenu.innerHTML = `<dd class='col d-flex ingredient-item'>${filtreIngredients}</dd>`;
 
-    // if (ingredients && focus) {
-    //     dropdownItem.style.background = 'none';
-    //     ingredientsArray.push(`<dd class='d-flex ingredient-item'>${filtreIngredients}</dd>`);
-    // };
+    // SORT APPLIANCE ------------------------------
+    let allAppliances = recipes.reduce((acc, curVal) => acc.concat(curVal.appliance.toLowerCase()), []);
+    let applianceWithNoDouble = new Set(allAppliances);
+
+    for (let appliance of applianceWithNoDouble) {
+        dropdownItem[1].innerHTML += `<dd class='col ingredient-item'>${appliance}</dd>`;
+        // console.log(appliance);
+    }
+
+    // SORT USTENSILS ------------------------------    
+    let allUstensils = recipes.reduce((acc, curVal) => acc.concat(curVal.ustensils), []);
+    let lowerCaseUstensils = allUstensils.map((elm) => elm.toLowerCase());
+
+    // console.log(lowerCaseUstensils);
+    let ustensilsWithNoDouble = new Set(lowerCaseUstensils);
+
+    for (let ustensil of ustensilsWithNoDouble) {
+        dropdownItem[2].innerHTML += `<dd class='col ingredient-item'>${ustensil}</dd>`;
+        console.log(ustensil);
+    }
+
+
+    // let ustensilsWithNoDouble = new Set(ustensilToLowerCase);
+
+    // for (let ustensil of ustensilsWithNoDouble) {
+    //     dropdownItem[2].innerHTML += `<dd class='col ingredient-item'>${ustensil}</dd>`;
+    //     // console.log(ustensil);
+    // }
+
 
     // DROPDOWN BUTTON------------------------------
     function inputFunction() {
@@ -55,6 +74,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
+                    dropdownItem[0].innerHTML = '';
+                    dropdownItem[1].innerHTML = '';
+                    dropdownItem[2].innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -75,6 +97,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
+                    dropdownItem[0].innerHTML = '';
+                    dropdownItem[1].innerHTML = '';
+                    dropdownItem[2].innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -95,6 +120,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
+                    dropdownItem[0].innerHTML = '';
+                    dropdownItem[1].innerHTML = '';
+                    dropdownItem[2].innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -108,4 +136,27 @@ function dropdown() {
     inputFunction();
 }
 dropdown();
+
+
+
+
+
+
+// let filtreIngredients = ingredientInIngredients.filter((ele, pos) => ingredientInIngredients.indexOf(ele) == pos).join(' ');
+
+// let ingredientsArray = [];
+// console.log(allIngredients);
+// console.log(ingredientInIngredients);
+// console.log(filtreIngredients);
+// console.log(IngredientsWithNoDouble);
+
+// dropdownMenu.innerHTML = `<dd class='col d-flex ingredient-item'>${filtreIngredients}</dd>`;
+
+// if (ingredients && focus) {
+//     dropdownItem.style.background = 'none';
+//     ingredientsArray.push(`<dd class='d-flex ingredient-item'>${filtreIngredients}</dd>`);
+// };
+
+
+// ingredients.push(`<dd class='col d-flex ingredient-item'>${element}</dd>`);
 

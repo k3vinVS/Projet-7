@@ -80,6 +80,7 @@ h2 {
   height: auto;
   border-radius: 0 0 5px 5px;
   margin-top: -2px;
+  transform: translate3d(0px, 69px, 0px) !important;
 }
 
 .dropdown-item {
@@ -90,27 +91,26 @@ h2 {
   width: auto;
   height: auto;
   border-radius: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   // border-radius: 0 0 5px 5px;
   // max-height: 48vh;
   // overflow: hidden; /* A modifier une fois le tri des doublons effectue */
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   background: none;
 }
 
 .ingredient-item {
+  min-width: 236px;
+  width: auto;
   font-size: 18px;
   line-height: 21.6px;
   color: white;
   cursor: pointer;
   // padding-right: 10px;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 //---------------------- CARD SECTION ----------------------

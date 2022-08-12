@@ -7,26 +7,26 @@ const result = document.getElementById('result');
 
 // ------------------------------ FETCH ------------------------------
 async function fetchMeals() {
-    await fetch('./recipes.json')
-      .then((res) => res.json())
-      .then((data) => (recipes = data.recipes))
-      .catch((err) => console.log(err))
-    // console.log(recipes);
-  }
-  
-  // INPUT SEARCH ------------------------------
-  inputForm.addEventListener('input', (e) => {
-    fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
-  })
-  
-  // SEARCH FORM ------------------------------
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    fetchMeals().then(() => recipesDisplay());
-  })
-  
-  // INPUT SEARCH BUTTON ------------------------------
-  searchButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    fetchMeals().then(() => recipesDisplay());
-  })
+  await fetch('./recipes.json')
+    .then((res) => res.json())
+    .then((data) => (recipes = data.recipes))
+    .catch((err) => console.log(err))
+  // console.log(recipes);
+}
+
+// INPUT SEARCH ------------------------------
+inputForm.addEventListener('input', (e) => {
+  fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
+})
+
+// SEARCH FORM ------------------------------
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchMeals().then(() => recipesDisplay());
+})
+
+// INPUT SEARCH BUTTON ------------------------------
+searchButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetchMeals().then(() => recipesDisplay());
+})
