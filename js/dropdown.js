@@ -45,16 +45,8 @@ function dropdown() {
 
     for (let ustensil of ustensilsWithNoDouble) {
         dropdownItem[2].innerHTML += `<dd class='col ingredient-item'>${ustensil}</dd>`;
-        console.log(ustensil);
+        // console.log(ustensil);
     }
-
-
-    // let ustensilsWithNoDouble = new Set(ustensilToLowerCase);
-
-    // for (let ustensil of ustensilsWithNoDouble) {
-    //     dropdownItem[2].innerHTML += `<dd class='col ingredient-item'>${ustensil}</dd>`;
-    //     // console.log(ustensil);
-    // }
 
 
     // DROPDOWN BUTTON------------------------------

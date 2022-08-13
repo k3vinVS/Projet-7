@@ -1,5 +1,6 @@
 // DOM ELEMENTS
 const cardSection = document.querySelector('.card-section');
+const searchInput = document.getElementById('search-input');
 let recipes = [];
 
 
@@ -8,6 +9,14 @@ function recipesDisplay() {
   if (recipes === null) {
     result.innerHTML = `<h2 class='text-center'>Aucun résultat</h2>`;
   }
+
+  searchInput.addEventListener('input', (e) => {
+    if (e.target.selectionStart >= 3) {
+      recipes.filter((recipe) => console.log(recipe.name.toLowerCase().includes(searchInput.value.toLowerCase())));
+      // console.log(e.target.value);
+    }
+    // console.log(e);
+  })
 
   cardSection.innerHTML = recipes.map((recipe) => {
     let ingredientsArray = [];
@@ -69,6 +78,6 @@ function recipesDisplay() {
         </div>
     </div>
     `
-  }
-  ).join("");
+  })
+    .join("");
 };
