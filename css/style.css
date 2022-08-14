@@ -28,14 +28,17 @@ h2 {
 }
 
 .tag {
-  width: 107px;
+  min-width: 107px;
   height: 37px;
   font-size: 14px;
   font-weight: 700;
   line-height: 16.8px;
+  color: white;
+  margin: 0 10px 10px 0;
 }
 
 .close-tag {
+  margin-left: 3px;
   cursor: pointer;
 }
 
@@ -77,10 +80,13 @@ h2 {
   height: auto;
   border-radius: 0 0 5px 5px;
   margin-top: -2px;
+  padding: 10px 20px;
   transform: translate3d(0px, 69px, 0px) !important;
 }
 
-.dropdown-item {
+.dropdown-ingredient-item,
+.dropdown-appliance-item,
+.dropdown-ustensil-item {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   min-width: 170px;
@@ -88,13 +94,16 @@ h2 {
   width: auto;
   height: auto;
   border-radius: 5px;
+  padding-left: 5px;
 }
 
-.dropdown-item:hover {
+.dropdown-ingredient-item:hover,
+.dropdown-appliance-item:hover,
+.dropdown-ustensil-item:hover {
   background: none;
 }
 
-.ingredient-item {
+.sort-item {
   min-width: 236px;
   width: auto;
   font-size: 18px;

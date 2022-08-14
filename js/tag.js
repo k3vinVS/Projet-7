@@ -2,38 +2,56 @@
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
 const closeTag = document.querySelectorAll('.close-tag');
+const ingredientItem = document.querySelector('.dropdown-ingredient-item');
+const applianceItem = document.querySelector('.dropdown-appliance-item');
+const ustensilItem = document.querySelector('.dropdown-ustensil-item');
+
+// console.log(ingredientItem);
+
+
+let tagList = [];
 
 // ------------------------------ SORT TAGS HTML ------------------------------
-function showSortTag() {
-    tagSection.innerHTML += sortTag();
-  }
-  showSortTag();
-  
-  tagSection.addEventListener('click', () => {
-    // console.log('click');
-  })
-  
-  // for (let i = 0; i < closeTag.length; i++) {
-  //   let newIndex = i;
-  //   console.log('click');
-  
-  //   closeTag[newIndex].addEventListener('click', (e) => {
-  //     // closeTag.style.display = 'none';
-  //   })
-  
-  // }
-  
-  
-  // ------------------------------ SORT TAGS ------------------------------
-  function sortTag() {
-    let divTagHtml = `
+
+tagEl.onclick = (e) => {
+  console.log(e.target);
+}
+
+
+// for (tag of closeTag) {
+//   console.log(tag);
+// }
+// closeTag.forEach(element => {
+//   element.addEventListener('click', (e) => {
+//     console.log(e.target);
+//   })
+// });
+
+// closeTag.addEventListener('click', () => {
+//   console.log('click');
+// })
+
+// for (let i = 0; i < closeTag.length; i++) {
+//   let newIndex = i;
+//   console.log('click');
+
+//   closeTag[newIndex].addEventListener('click', (e) => {
+//     // closeTag.style.display = 'none';
+//   })
+
+// }
+
+
+// ------------------------------ SORT TAGS ------------------------------
+function sortTag(e) {
+  console.log(e.target);
+  let divTagHtml = `
       <div
-              class="col-2 tag bg-primary text-center d-inline-flex justify-content-around align-items-center p-2 text-white rounded"
-              style="height: 37px; font-size: 14px"
+              class="tag bg-primary text-center d-inline-flex justify-content-around align-items-center p-2 rounded"
             >
-              Coco
+              ${e.target.textContent}
               <svg
-                class="align-text-top close-tag"
+                class="align-middle close-tag"
                 width="20"
                 height="20"
                 viewBox="0 0 20 20"
@@ -47,5 +65,5 @@ function showSortTag() {
               </svg>
             </div>
       `;
-    return divTagHtml;
-  }
+  return divTagHtml;
+}

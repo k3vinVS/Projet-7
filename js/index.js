@@ -5,6 +5,7 @@ const inputForm = document.getElementById('search-input');
 const searchButton = document.querySelector('.search');
 const result = document.getElementById('result');
 
+
 // ------------------------------ FETCH ------------------------------
 async function fetchMeals() {
   await fetch('./recipes.json')
@@ -17,6 +18,11 @@ async function fetchMeals() {
 // INPUT SEARCH ------------------------------
 inputForm.addEventListener('input', (e) => {
   fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
+
+  // if (e.target.selectionStart >= 3) {
+  //   recipes.filter((recipe) => console.log(recipe.name.toLowerCase().includes(searchInput.value.toLowerCase())));
+  //   console.log(e.target.value);
+  // }
 })
 
 // SEARCH FORM ------------------------------

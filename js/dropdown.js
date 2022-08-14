@@ -3,7 +3,9 @@ const dropdownBtn = document.querySelectorAll('.sort-button');
 const textBtn = document.querySelectorAll('.search-text-button');
 const inputSearch = document.querySelectorAll('.input-search');
 const dropdownMenu = document.querySelector('.dropdown-menu');
-const dropdownItem = document.querySelectorAll('.dropdown-item');
+const dropdownIngredientItem = document.querySelector('.dropdown-ingredient-item');
+const dropdownApplianceItem = document.querySelector('.dropdown-appliance-item');
+const dropdownUstensilItem = document.querySelector('.dropdown-ustensil-item');
 
 // SORT BUTTONS CHOICE ------------------------------
 dropdownBtn.forEach(button => {
@@ -22,7 +24,7 @@ function dropdown() {
 
     // console.log(ingredientInIngredients);
     for (let ingredient of IngredientsWithNoDouble) {
-        dropdownItem[0].innerHTML += `<dd class='col ingredient-item'>${ingredient}</dd>`;
+        dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
         // console.log(ingredient);
     }
 
@@ -32,7 +34,7 @@ function dropdown() {
     let applianceWithNoDouble = new Set(allAppliances);
 
     for (let appliance of applianceWithNoDouble) {
-        dropdownItem[1].innerHTML += `<dd class='col ingredient-item'>${appliance}</dd>`;
+        dropdownApplianceItem.innerHTML += `<dd class='col sort-item'>${appliance}</dd>`;
         // console.log(appliance);
     }
 
@@ -44,7 +46,7 @@ function dropdown() {
     let ustensilsWithNoDouble = new Set(lowerCaseUstensils);
 
     for (let ustensil of ustensilsWithNoDouble) {
-        dropdownItem[2].innerHTML += `<dd class='col ingredient-item'>${ustensil}</dd>`;
+        dropdownUstensilItem.innerHTML += `<dd class='col sort-item'>${ustensil}</dd>`;
         // console.log(ustensil);
     }
 
@@ -66,9 +68,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
-                    dropdownItem[0].innerHTML = '';
-                    dropdownItem[1].innerHTML = '';
-                    dropdownItem[2].innerHTML = '';
+                    dropdownIngredientItem.innerHTML = '';
+                    dropdownApplianceItem.innerHTML = '';
+                    dropdownUstensilItem.innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -89,9 +91,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
-                    dropdownItem[0].innerHTML = '';
-                    dropdownItem[1].innerHTML = '';
-                    dropdownItem[2].innerHTML = '';
+                    dropdownIngredientItem.innerHTML = '';
+                    dropdownApplianceItem.innerHTML = '';
+                    dropdownUstensilItem.innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -112,9 +114,9 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
-                    dropdownItem[0].innerHTML = '';
-                    dropdownItem[1].innerHTML = '';
-                    dropdownItem[2].innerHTML = '';
+                    dropdownIngredientItem.innerHTML = '';
+                    dropdownApplianceItem.innerHTML = '';
+                    dropdownUstensilItem.innerHTML = '';
                     textBtn[0].textContent = 'Ingredients';
                     textBtn[1].textContent = 'Appareils';
                     textBtn[2].textContent = 'Ustensiles';
@@ -126,8 +128,55 @@ function dropdown() {
 
     }
     inputFunction();
+    sortInputSearch();
 }
 dropdown();
+
+
+// SEARCH IN SORT BUTTON
+function sortInputSearch() {
+    for (recipe of recipes) {
+        let ingredients = recipe.ingredients;
+        let appliances = recipe.appliance;
+        let ustensils = recipe.ustensils;
+        inputSearch[0].addEventListener('input', (e) => {
+            // console.log(e.target.value);
+            // console.log(ingredients.filter((ingredient) => ingredient.includes(e.target.value.toLowerCase())));
+        })
+        inputSearch[1].addEventListener('input', (e) => {
+            // console.log(e.target.value);
+            // console.log(appliances);
+        })
+        inputSearch[2].addEventListener('input', (e) => {
+            // console.log(e.target.value);
+            // console.log(ustensils);
+        })
+    }
+}
+sortInputSearch();
+
+// ADD TO TAG
+dropdownIngredientItem.addEventListener('click', (e) => {
+    // console.log(e.target.textContent);
+    // if(e.target.textContent){
+    //     tagSection.innerHTML += recipes.push(sortTag());
+    // }
+    // tagSection.innerHTML += `<div>${e.target.textContent}</div>`;
+    tagSection.innerHTML += sortTag(e);
+});
+
+dropdownApplianceItem.addEventListener('click', (e) => {
+    // console.log(e.target.textContent);
+    tagSection.innerHTML += sortTag(e);
+});
+
+dropdownUstensilItem.addEventListener('click', (e) => {
+    // console.log(e.target.textContent);
+    tagSection.innerHTML += sortTag(e);
+});
+
+
+
 
 
 
