@@ -141,7 +141,7 @@ function sortInputSearch() {
         let ustensils = recipe.ustensils;
         inputSearch[0].addEventListener('input', (e) => {
             // console.log(e.target.value);
-            // console.log(ingredients.filter((ingredient) => ingredient.includes(e.target.value.toLowerCase())));
+            console.log(ingredients);
         })
         inputSearch[1].addEventListener('input', (e) => {
             // console.log(e.target.value);
@@ -158,22 +158,24 @@ sortInputSearch();
 // ADD TO TAG
 dropdownIngredientItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
-    // if(e.target.textContent){
-    //     tagSection.innerHTML += recipes.push(sortTag());
-    // }
-    // tagSection.innerHTML += `<div>${e.target.textContent}</div>`;
-    tagSection.innerHTML += sortTag(e);
+    tagSection.innerHTML += sortTag(e, '#0069d9');
+    closeBtn();
 });
 
 dropdownApplianceItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
-    tagSection.innerHTML += sortTag(e);
+    tagSection.innerHTML += sortTag(e, '#68d9a4');
+    // closeTag.style.backgroundColor = '#68d9a4 !important';
+    closeBtn();
+    changeBgColor();
 });
 
 dropdownUstensilItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
-    tagSection.innerHTML += sortTag(e);
+    tagSection.innerHTML += sortTag(e, '#ed6454');
+    closeBtn();
 });
+
 
 
 

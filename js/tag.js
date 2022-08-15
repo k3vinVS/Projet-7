@@ -2,52 +2,59 @@
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
 const closeTag = document.querySelectorAll('.close-tag');
-const ingredientItem = document.querySelector('.dropdown-ingredient-item');
-const applianceItem = document.querySelector('.dropdown-appliance-item');
-const ustensilItem = document.querySelector('.dropdown-ustensil-item');
-
-// console.log(ingredientItem);
-
-
-let tagList = [];
+// const ingredientItem = document.querySelector('.dropdown-ingredient-item');
+// const applianceItem = document.querySelector('.dropdown-appliance-item');
+// const ustensilItem = document.querySelector('.dropdown-ustensil-item');
 
 // ------------------------------ SORT TAGS HTML ------------------------------
 
-tagEl.onclick = (e) => {
-  console.log(e.target);
+// tagEl.onclick = (e) => {
+//   console.log(e.target);
+// }
+
+// function closeBtn() {
+//   for (let i = 0; i < closeTag.length; i++) {
+//     console.log(i);
+//   }
+// };
+
+function closeBtn() {
+  const tagEl = document.querySelectorAll('.tag');
+  const closeTag = document.querySelectorAll('.close-tag');
+
+  for (let i = 0; i < closeTag.length; i++) {
+    closeTag[i].addEventListener('click', (e) => {
+      // console.log(i);
+      tagEl[i].remove();
+    })
+  }
+}
+
+function changeBgColor() {
+  const tagEl = document.querySelectorAll('.tag');
+
+  for (let j = 0; j < tagEl.length; j++) {
+    tagEl[j].style.background = 'yellow !important';
+    tagEl[j].setAttribute("style", "background: #68d9a4");
+
+    console.log(tagEl[j]);
+  }
+
+  for (let tag of tagEl) {
+    // console.log(tag);
+    tag.style.background = '#68d9a4 !important';
+  }
 }
 
 
-// for (tag of closeTag) {
-//   console.log(tag);
-// }
-// closeTag.forEach(element => {
-//   element.addEventListener('click', (e) => {
-//     console.log(e.target);
-//   })
-// });
-
-// closeTag.addEventListener('click', () => {
-//   console.log('click');
-// })
-
-// for (let i = 0; i < closeTag.length; i++) {
-//   let newIndex = i;
-//   console.log('click');
-
-//   closeTag[newIndex].addEventListener('click', (e) => {
-//     // closeTag.style.display = 'none';
-//   })
-
-// }
-
 
 // ------------------------------ SORT TAGS ------------------------------
-function sortTag(e) {
-  console.log(e.target);
+function sortTag(e, bgParent) {
+  // console.log(e.target);
   let divTagHtml = `
       <div
-              class="tag bg-primary text-center d-inline-flex justify-content-around align-items-center p-2 rounded"
+              class="tag text-center d-inline-flex justify-content-around align-items-center p-2 rounded"
+              style="background-color: ${bgParent}"
             >
               ${e.target.textContent}
               <svg
@@ -66,4 +73,4 @@ function sortTag(e) {
             </div>
       `;
   return divTagHtml;
-}
+};
