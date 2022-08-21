@@ -30,21 +30,6 @@ function closeBtn() {
   }
 }
 
-function changeBgColor() {
-  const tagEl = document.querySelectorAll('.tag');
-
-  for (let j = 0; j < tagEl.length; j++) {
-    tagEl[j].style.background = 'yellow !important';
-    tagEl[j].setAttribute("style", "background: #68d9a4");
-
-    console.log(tagEl[j]);
-  }
-
-  for (let tag of tagEl) {
-    // console.log(tag);
-    tag.style.background = '#68d9a4 !important';
-  }
-}
 
 
 

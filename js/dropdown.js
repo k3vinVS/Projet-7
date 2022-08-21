@@ -7,6 +7,7 @@ const dropdownIngredientItem = document.querySelector('.dropdown-ingredient-item
 const dropdownApplianceItem = document.querySelector('.dropdown-appliance-item');
 const dropdownUstensilItem = document.querySelector('.dropdown-ustensil-item');
 
+
 // SORT BUTTONS CHOICE ------------------------------
 dropdownBtn.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -20,13 +21,14 @@ function dropdown() {
     // SORT INGREDIENTS ------------------------------
     let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
     let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
-    let IngredientsWithNoDouble = new Set(ingredientInIngredients);
+    let ingredientsWithNoDouble = new Set(ingredientInIngredients);
 
-    // console.log(ingredientInIngredients);
-    for (let ingredient of IngredientsWithNoDouble) {
+    for (let ingredient of ingredientsWithNoDouble) {
         dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
-        // console.log(ingredient);
     }
+
+    // console.log(filteredIngredients);
+    // console.log(ingredientsWithNoDouble);
 
 
     // SORT APPLIANCE ------------------------------
@@ -38,17 +40,22 @@ function dropdown() {
         // console.log(appliance);
     }
 
+    // console.log(applianceWithNoDouble);
+    // console.log(filteredAppliances);
+
+
     // SORT USTENSILS ------------------------------    
     let allUstensils = recipes.reduce((acc, curVal) => acc.concat(curVal.ustensils), []);
     let lowerCaseUstensils = allUstensils.map((elm) => elm.toLowerCase());
-
-    // console.log(lowerCaseUstensils);
     let ustensilsWithNoDouble = new Set(lowerCaseUstensils);
 
     for (let ustensil of ustensilsWithNoDouble) {
         dropdownUstensilItem.innerHTML += `<dd class='col sort-item'>${ustensil}</dd>`;
         // console.log(ustensil);
     }
+
+    // console.log(filteredUstensils);
+    // console.log(ustensilsWithNoDouble);
 
 
     // DROPDOWN BUTTON------------------------------
@@ -66,6 +73,7 @@ function dropdown() {
             if (inputSearch[0].style.display === 'inline-block') {
                 window.onclick = () => {
                     inputSearch[0].style.display = 'none';
+                    inputSearch[0].value = '';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
                     dropdownIngredientItem.innerHTML = '';
@@ -90,6 +98,7 @@ function dropdown() {
                 window.onclick = () => {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
+                    inputSearch[1].value = '';
                     inputSearch[2].style.display = 'none';
                     dropdownIngredientItem.innerHTML = '';
                     dropdownApplianceItem.innerHTML = '';
@@ -114,6 +123,7 @@ function dropdown() {
                     inputSearch[0].style.display = 'none';
                     inputSearch[1].style.display = 'none';
                     inputSearch[2].style.display = 'none';
+                    inputSearch[2].value = '';
                     dropdownIngredientItem.innerHTML = '';
                     dropdownApplianceItem.innerHTML = '';
                     dropdownUstensilItem.innerHTML = '';
@@ -128,32 +138,68 @@ function dropdown() {
 
     }
     inputFunction();
-    sortInputSearch();
+    // sortInputSearch();
 }
 dropdown();
 
 
 // SEARCH IN SORT BUTTON
 function sortInputSearch() {
-    for (recipe of recipes) {
-        let ingredients = recipe.ingredients;
-        let appliances = recipe.appliance;
-        let ustensils = recipe.ustensils;
-        inputSearch[0].addEventListener('input', (e) => {
-            // console.log(e.target.value);
-            console.log(ingredients);
-        })
-        inputSearch[1].addEventListener('input', (e) => {
-            // console.log(e.target.value);
-            // console.log(appliances);
-        })
-        inputSearch[2].addEventListener('input', (e) => {
-            // console.log(e.target.value);
-            // console.log(ustensils);
-        })
-    }
+
+    // ------------ PREMIER INPUT ------------
+
+    inputSearch[0].addEventListener('input', (e) => {
+        const filteredIngredients = ingredientInIngredients.filter((ele, pos) => {
+            return ingredientInIngredients.indexOf(ele) === pos;
+        });
+        const searchIngredient = e.target.value.toLowerCase().replace(/\s/g, "");
+        const filteredIng = filteredIngredients.filter(el => el.toLowerCase().includes(searchIngredient));
+        dropdownIngredientItem.innerHTML = '';
+
+        for (ingredient of filteredIng) {
+            dropdownIngredientItem.innerHTML += `<dd class='col-3 sort-item'>${ingredient}</dd>`;
+            // console.log(ingredient);
+        }
+    })
+
+    // ------------ DEUXIEME INPUT ------------
+
+    inputSearch[1].addEventListener('input', (e) => {
+        const filteredAppliances = allAppliances.filter((ele, pos) => {
+            return allAppliances.indexOf(ele) === pos;
+        });
+        const searchAppliance = e.target.value.toLowerCase().replace(/\s/g, "");
+        const filteredApp = filteredAppliances.filter(el => el.toLowerCase().includes(searchAppliance));
+        // console.log(filteredApp);
+        dropdownApplianceItem.innerHTML = '';
+
+
+        for (appliance of filteredApp) {
+            dropdownApplianceItem.innerHTML += `<dd class='col-3 sort-item'>${appliance}</dd>`;
+            // console.log(ingredient);
+        }
+    })
+
+
+    // ------------ TROISIEME INPUT ------------
+
+    inputSearch[2].addEventListener('input', (e) => {
+        const filteredUstensils = lowerCaseUstensils.filter((ele, pos) => {
+            return lowerCaseUstensils.indexOf(ele) === pos;
+        });
+        const searchUstensils = e.target.value.toLowerCase().replace(/\s/g, "");
+        const filteredUst = filteredUstensils.filter(el => el.toLowerCase().includes(searchUstensils));
+        // console.log(filteredApp);
+        dropdownUstensilItem.innerHTML = '';
+
+
+        for (ustensil of filteredUst) {
+            dropdownUstensilItem.innerHTML += `<dd class='col-3 sort-item'>${ustensil}</dd>`;
+            console.log(ustensil);
+        }
+    })
 }
-sortInputSearch();
+// sortInputSearch();
 
 // ADD TO TAG
 dropdownIngredientItem.addEventListener('click', (e) => {
@@ -167,7 +213,6 @@ dropdownApplianceItem.addEventListener('click', (e) => {
     tagSection.innerHTML += sortTag(e, '#68d9a4');
     // closeTag.style.backgroundColor = '#68d9a4 !important';
     closeBtn();
-    changeBgColor();
 });
 
 dropdownUstensilItem.addEventListener('click', (e) => {
@@ -175,13 +220,6 @@ dropdownUstensilItem.addEventListener('click', (e) => {
     tagSection.innerHTML += sortTag(e, '#ed6454');
     closeBtn();
 });
-
-
-
-
-
-
-
 
 
 
