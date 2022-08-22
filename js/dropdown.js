@@ -2,7 +2,7 @@
 const dropdownBtn = document.querySelectorAll('.sort-button');
 const textBtn = document.querySelectorAll('.search-text-button');
 const inputSearch = document.querySelectorAll('.input-search');
-const dropdownMenu = document.querySelector('.dropdown-menu');
+const dropdownMenu = document.querySelectorAll('.dropdown-menu');
 const dropdownIngredientItem = document.querySelector('.dropdown-ingredient-item');
 const dropdownApplianceItem = document.querySelector('.dropdown-appliance-item');
 const dropdownUstensilItem = document.querySelector('.dropdown-ustensil-item');
@@ -27,8 +27,22 @@ function dropdown() {
         dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
     }
 
-    // console.log(filteredIngredients);
-    // console.log(ingredientsWithNoDouble);
+    inputSearch[0].onfocus = () => {
+        dropdownMenu[0].style.display = 'block';
+        inputSearch[0].addEventListener('input', (e) => {
+            const filteredIngredients = ingredientInIngredients.filter((ele, pos) => {
+                return ingredientInIngredients.indexOf(ele) === pos;
+            });
+            const searchIngredient = e.target.value.toLowerCase().replace(/\s/g, " ");
+            const filteredIng = filteredIngredients.filter(el => el.toLowerCase().includes(searchIngredient));
+            dropdownIngredientItem.innerHTML = '';
+
+            for (ingredient of filteredIng) {
+                dropdownIngredientItem.innerHTML += `<dd class='col-3 sort-item'>${ingredient}</dd>`;
+                // console.log(ingredient);
+            }
+        })
+    }
 
 
     // SORT APPLIANCE ------------------------------
@@ -40,8 +54,26 @@ function dropdown() {
         // console.log(appliance);
     }
 
+    inputSearch[1].onfocus = () => {
+        dropdownMenu[1].style.display = 'block';
+        inputSearch[1].addEventListener('input', (e) => {
+            const filteredAppliances = allAppliances.filter((ele, pos) => {
+                return allAppliances.indexOf(ele) === pos;
+            });
+            const searchAppliance = e.target.value.toLowerCase().replace(/\s/g, "");
+            const filteredApp = filteredAppliances.filter(el => el.toLowerCase().includes(searchAppliance));
+            // console.log(filteredApp);
+            dropdownApplianceItem.innerHTML = '';
+
+
+            for (appliance of filteredApp) {
+                dropdownApplianceItem.innerHTML += `<dd class='col-3 sort-item'>${appliance}</dd>`;
+                // console.log(ingredient);
+            }
+        })
+    }
+
     // console.log(applianceWithNoDouble);
-    // console.log(filteredAppliances);
 
 
     // SORT USTENSILS ------------------------------    
@@ -54,152 +86,113 @@ function dropdown() {
         // console.log(ustensil);
     }
 
-    // console.log(filteredUstensils);
+    inputSearch[2].onfocus = () => {
+        dropdownMenu[2].style.display = 'block';
+        inputSearch[2].addEventListener('input', (e) => {
+            const filteredUstensils = lowerCaseUstensils.filter((ele, pos) => {
+                return lowerCaseUstensils.indexOf(ele) === pos;
+            });
+            const searchUstensils = e.target.value.toLowerCase().replace(/\s/g, "");
+            const filteredUst = filteredUstensils.filter(el => el.toLowerCase().includes(searchUstensils));
+            // console.log(filteredApp);
+            dropdownUstensilItem.innerHTML = '';
+
+
+            for (ustensil of filteredUst) {
+                dropdownUstensilItem.innerHTML += `<dd class='col-3 sort-item'>${ustensil}</dd>`;
+                console.log(ustensil);
+            }
+        })
+    }
+
     // console.log(ustensilsWithNoDouble);
 
-
-    // DROPDOWN BUTTON------------------------------
-    function inputFunction() {
-        const btn = document.querySelectorAll('.sort-button');
-        const textBtn = document.querySelectorAll('.search-text-button');
-        const inputSearch = document.querySelectorAll('.input-search');
-
-        // DROPDOWN INGREDIENT BUTTON------------------------------  
-        btn[0].onclick = () => {
-            textBtn[0].textContent = '';
-            inputSearch[0].style.display = 'inline-block';
-            inputSearch[0].style.border = 'none';
-            // console.log(inputSearch);
-            if (inputSearch[0].style.display === 'inline-block') {
-                window.onclick = () => {
-                    inputSearch[0].style.display = 'none';
-                    inputSearch[0].value = '';
-                    inputSearch[1].style.display = 'none';
-                    inputSearch[2].style.display = 'none';
-                    dropdownIngredientItem.innerHTML = '';
-                    dropdownApplianceItem.innerHTML = '';
-                    dropdownUstensilItem.innerHTML = '';
-                    textBtn[0].textContent = 'Ingredients';
-                    textBtn[1].textContent = 'Appareils';
-                    textBtn[2].textContent = 'Ustensiles';
-                    // console.log(textBtn);
-                }
-                // console.log('test input');
-            }
-        }
-
-        // DROPDOWN APPLIANCE BUTTON------------------------------  
-        btn[1].onclick = () => {
-            textBtn[1].textContent = '';
-            inputSearch[1].style.display = 'inline-block';
-            inputSearch[1].style.border = 'none';
-            // console.log(inputSearch);
-            if (inputSearch[1].style.display === 'inline-block') {
-                window.onclick = () => {
-                    inputSearch[0].style.display = 'none';
-                    inputSearch[1].style.display = 'none';
-                    inputSearch[1].value = '';
-                    inputSearch[2].style.display = 'none';
-                    dropdownIngredientItem.innerHTML = '';
-                    dropdownApplianceItem.innerHTML = '';
-                    dropdownUstensilItem.innerHTML = '';
-                    textBtn[0].textContent = 'Ingredients';
-                    textBtn[1].textContent = 'Appareils';
-                    textBtn[2].textContent = 'Ustensiles';
-                    // console.log(textBtn);
-                }
-                // console.log('test input');
-            }
-        }
-
-        // DROPDOWN USTENSILS BUTTON------------------------------  
-        btn[2].onclick = () => {
-            textBtn[2].textContent = '';
-            inputSearch[2].style.display === 'inline-block';
-            inputSearch[2].style.border = 'none';
-            // console.log(inputSearch);
-            if (inputSearch[2].style.display = 'inline-block') {
-                window.onclick = () => {
-                    inputSearch[0].style.display = 'none';
-                    inputSearch[1].style.display = 'none';
-                    inputSearch[2].style.display = 'none';
-                    inputSearch[2].value = '';
-                    dropdownIngredientItem.innerHTML = '';
-                    dropdownApplianceItem.innerHTML = '';
-                    dropdownUstensilItem.innerHTML = '';
-                    textBtn[0].textContent = 'Ingredients';
-                    textBtn[1].textContent = 'Appareils';
-                    textBtn[2].textContent = 'Ustensiles';
-                    // console.log(textBtn);
-                }
-                // console.log('test input');
-            }
-        }
-
-    }
+    //  DROPDOWN BUTTON ------------------------------
     inputFunction();
-    // sortInputSearch();
 }
 dropdown();
 
+// ------------------------------ DROPDOWN BUTTON ------------------------------
+function inputFunction() {
+    const btn = document.querySelectorAll('.sort-button');
+    const textBtn = document.querySelectorAll('.search-text-button');
+    const inputSearch = document.querySelectorAll('.input-search');
 
-// SEARCH IN SORT BUTTON
-function sortInputSearch() {
-
-    // ------------ PREMIER INPUT ------------
-
-    inputSearch[0].addEventListener('input', (e) => {
-        const filteredIngredients = ingredientInIngredients.filter((ele, pos) => {
-            return ingredientInIngredients.indexOf(ele) === pos;
-        });
-        const searchIngredient = e.target.value.toLowerCase().replace(/\s/g, "");
-        const filteredIng = filteredIngredients.filter(el => el.toLowerCase().includes(searchIngredient));
-        dropdownIngredientItem.innerHTML = '';
-
-        for (ingredient of filteredIng) {
-            dropdownIngredientItem.innerHTML += `<dd class='col-3 sort-item'>${ingredient}</dd>`;
-            // console.log(ingredient);
+    // DROPDOWN INGREDIENT BUTTON------------------------------  
+    btn[0].onclick = () => {
+        textBtn[0].textContent = '';
+        inputSearch[0].style.display = 'inline-block';
+        inputSearch[0].style.border = 'none';
+        // console.log(inputSearch);
+        if (inputSearch[0].style.display === 'inline-block') {
+            window.onclick = () => {
+                inputSearch[0].style.display = 'none';
+                inputSearch[0].value = '';
+                inputSearch[1].style.display = 'none';
+                inputSearch[2].style.display = 'none';
+                dropdownIngredientItem.innerHTML = '';
+                dropdownApplianceItem.innerHTML = '';
+                dropdownUstensilItem.innerHTML = '';
+                textBtn[0].textContent = 'Ingredients';
+                textBtn[1].textContent = 'Appareils';
+                textBtn[2].textContent = 'Ustensiles';
+                dropdownMenu[0].style.display = 'none';
+                // console.log(textBtn);
+            }
         }
-    })
+    }
 
-    // ------------ DEUXIEME INPUT ------------
-
-    inputSearch[1].addEventListener('input', (e) => {
-        const filteredAppliances = allAppliances.filter((ele, pos) => {
-            return allAppliances.indexOf(ele) === pos;
-        });
-        const searchAppliance = e.target.value.toLowerCase().replace(/\s/g, "");
-        const filteredApp = filteredAppliances.filter(el => el.toLowerCase().includes(searchAppliance));
-        // console.log(filteredApp);
-        dropdownApplianceItem.innerHTML = '';
-
-
-        for (appliance of filteredApp) {
-            dropdownApplianceItem.innerHTML += `<dd class='col-3 sort-item'>${appliance}</dd>`;
-            // console.log(ingredient);
+    // DROPDOWN APPLIANCE BUTTON------------------------------  
+    btn[1].onclick = () => {
+        textBtn[1].textContent = '';
+        inputSearch[1].style.display = 'inline-block';
+        inputSearch[1].style.border = 'none';
+        // console.log(inputSearch);
+        if (inputSearch[1].style.display === 'inline-block') {
+            window.onclick = () => {
+                inputSearch[0].style.display = 'none';
+                inputSearch[1].style.display = 'none';
+                inputSearch[1].value = '';
+                inputSearch[2].style.display = 'none';
+                dropdownIngredientItem.innerHTML = '';
+                dropdownApplianceItem.innerHTML = '';
+                dropdownUstensilItem.innerHTML = '';
+                textBtn[0].textContent = 'Ingredients';
+                textBtn[1].textContent = 'Appareils';
+                textBtn[2].textContent = 'Ustensiles';
+                dropdownMenu[1].style.display = 'none';
+                // console.log(textBtn);
+            }
+            // console.log('test input');
         }
-    })
+    }
 
-
-    // ------------ TROISIEME INPUT ------------
-
-    inputSearch[2].addEventListener('input', (e) => {
-        const filteredUstensils = lowerCaseUstensils.filter((ele, pos) => {
-            return lowerCaseUstensils.indexOf(ele) === pos;
-        });
-        const searchUstensils = e.target.value.toLowerCase().replace(/\s/g, "");
-        const filteredUst = filteredUstensils.filter(el => el.toLowerCase().includes(searchUstensils));
-        // console.log(filteredApp);
-        dropdownUstensilItem.innerHTML = '';
-
-
-        for (ustensil of filteredUst) {
-            dropdownUstensilItem.innerHTML += `<dd class='col-3 sort-item'>${ustensil}</dd>`;
-            console.log(ustensil);
+    // DROPDOWN USTENSILS BUTTON------------------------------  
+    btn[2].onclick = () => {
+        textBtn[2].textContent = '';
+        inputSearch[2].style.display === 'inline-block';
+        inputSearch[2].style.border = 'none';
+        // console.log(inputSearch);
+        if (inputSearch[2].style.display = 'inline-block') {
+            window.onclick = () => {
+                inputSearch[0].style.display = 'none';
+                inputSearch[1].style.display = 'none';
+                inputSearch[2].style.display = 'none';
+                inputSearch[2].value = '';
+                dropdownIngredientItem.innerHTML = '';
+                dropdownApplianceItem.innerHTML = '';
+                dropdownUstensilItem.innerHTML = '';
+                textBtn[0].textContent = 'Ingredients';
+                textBtn[1].textContent = 'Appareils';
+                textBtn[2].textContent = 'Ustensiles';
+                dropdownMenu[2].style.display = 'none';
+                // console.log(textBtn);
+            }
+            // console.log('test input');
         }
-    })
+    }
+
 }
-// sortInputSearch();
 
 // ADD TO TAG
 dropdownIngredientItem.addEventListener('click', (e) => {
@@ -220,6 +213,69 @@ dropdownUstensilItem.addEventListener('click', (e) => {
     tagSection.innerHTML += sortTag(e, '#ed6454');
     closeBtn();
 });
+
+
+
+
+// SEARCH IN SORT BUTTON
+// function sortInputSearch() {
+//     // ------------ PREMIER INPUT ------------
+
+//     inputSearch[0].addEventListener('input', (e) => {
+//         const filteredIngredients = ingredientInIngredients.filter((ele, pos) => {
+//             return ingredientInIngredients.indexOf(ele) === pos;
+//         });
+//         const searchIngredient = e.target.value.toLowerCase().replace(/\s/g, "");
+//         const filteredIng = filteredIngredients.filter(el => el.toLowerCase().includes(searchIngredient));
+//         dropdownIngredientItem.innerHTML = '';
+
+//         for (ingredient of filteredIng) {
+//             dropdownIngredientItem.innerHTML += `<dd class='col-3 sort-item'>${ingredient}</dd>`;
+//             // console.log(ingredient);
+//         }
+//         console.log(e.target.value);
+//     })
+
+//     // ------------ DEUXIEME INPUT ------------
+
+//     inputSearch[1].addEventListener('input', (e) => {
+//         const filteredAppliances = allAppliances.filter((ele, pos) => {
+//             return allAppliances.indexOf(ele) === pos;
+//         });
+//         const searchAppliance = e.target.value.toLowerCase().replace(/\s/g, "");
+//         const filteredApp = filteredAppliances.filter(el => el.toLowerCase().includes(searchAppliance));
+//         // console.log(filteredApp);
+//         dropdownApplianceItem.innerHTML = '';
+
+
+//         for (appliance of filteredApp) {
+//             dropdownApplianceItem.innerHTML += `<dd class='col-3 sort-item'>${appliance}</dd>`;
+//             // console.log(ingredient);
+//         }
+//     })
+
+
+//     // ------------ TROISIEME INPUT ------------
+
+//     inputSearch[2].addEventListener('input', (e) => {
+//         const filteredUstensils = lowerCaseUstensils.filter((ele, pos) => {
+//             return lowerCaseUstensils.indexOf(ele) === pos;
+//         });
+//         const searchUstensils = e.target.value.toLowerCase().replace(/\s/g, "");
+//         const filteredUst = filteredUstensils.filter(el => el.toLowerCase().includes(searchUstensils));
+//         // console.log(filteredApp);
+//         dropdownUstensilItem.innerHTML = '';
+
+
+//         for (ustensil of filteredUst) {
+//             dropdownUstensilItem.innerHTML += `<dd class='col-3 sort-item'>${ustensil}</dd>`;
+//             console.log(ustensil);
+//         }
+//     })
+// }
+// sortInputSearch();
+
+
 
 
 
