@@ -12,27 +12,31 @@ async function fetchMeals() {
     .then((res) => res.json())
     .then((data) => (recipes = data.recipes))
     .catch((err) => console.log(err))
+
   // console.log(recipes);
+  recipesDisplay();
 }
 
-// INPUT SEARCH ------------------------------
-inputForm.addEventListener('input', (e) => {
-  fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
+// INPUT RECIPES SEARCH ------------------------------
+function searchMeals(e) {
+  e.preventDefault();
+  if (inputForm.value.length >= 3) {
+    fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
+    
+  } else if (inputForm.value.length === 0) {
+    fetchMeals();
+  }
+}
 
-  // if (e.target.selectionStart >= 3) {
-  //   recipes.filter((recipe) => console.log(recipe.name.toLowerCase().includes(searchInput.value.toLowerCase())));
-  //   console.log(e.target.value);
-  // }
-})
+// LOAD RECIPES ------------------------------
+window.addEventListener('load', fetchMeals);
+
+// INPUT SEARCH ------------------------------
+inputForm.addEventListener('input', searchMeals);
 
 // SEARCH FORM ------------------------------
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  fetchMeals().then(() => recipesDisplay());
-})
+// form.addEventListener('submit', searchMeals);
 
 // INPUT SEARCH BUTTON ------------------------------
-searchButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetchMeals().then(() => recipesDisplay());
-})
+// searchButton.addEventListener('click', searchMeals);
+

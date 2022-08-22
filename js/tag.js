@@ -2,21 +2,8 @@
 const tagSection = document.querySelector('.tag-section');
 const tagEl = document.querySelectorAll('.tag');
 const closeTag = document.querySelectorAll('.close-tag');
-// const ingredientItem = document.querySelector('.dropdown-ingredient-item');
-// const applianceItem = document.querySelector('.dropdown-appliance-item');
-// const ustensilItem = document.querySelector('.dropdown-ustensil-item');
 
-// ------------------------------ SORT TAGS HTML ------------------------------
-
-// tagEl.onclick = (e) => {
-//   console.log(e.target);
-// }
-
-// function closeBtn() {
-//   for (let i = 0; i < closeTag.length; i++) {
-//     console.log(i);
-//   }
-// };
+// ------------------------------ CLOSE SORT TAGS ------------------------------
 
 function closeBtn() {
   const tagEl = document.querySelectorAll('.tag');
@@ -29,8 +16,6 @@ function closeBtn() {
     })
   }
 }
-
-
 
 
 // ------------------------------ SORT TAGS ------------------------------

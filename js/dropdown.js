@@ -23,6 +23,8 @@ function dropdown() {
     let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
     let ingredientsWithNoDouble = new Set(ingredientInIngredients);
 
+    dropdownIngredientItem.innerHTML = '';
+
     for (let ingredient of ingredientsWithNoDouble) {
         dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
     }
