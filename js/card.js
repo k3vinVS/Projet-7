@@ -1,27 +1,54 @@
 // DOM ELEMENTS
 const cardSection = document.querySelector('.card-section');
 let recipes = [];
+let searchItem = inputForm.value;
+// ------------------------------ FUNCTIONS ------------------------------
 
+function joinIngredient(array) {
+  let ingredientList = [];
+  array.map(item => ingredientList.push(item.ingredient));
+  return ingredientList.join().toLowerCase();
+};
+// console.log(joinIngredient(recipes[0].ingredients));
+
+function recherchePrincipale(listOfRecipes, itemToSearch) {
+  let searchItem = inputForm.value;
+  let result = listOfRecipes.filter((recipe) =>
+  recipe.name.toLowerCase().includes(searchItem.toLowerCase()) ||
+  recipe.description.toLowerCase()
+  .includes(searchItem.toLowerCase()) ||
+  recipe.appliance.toLowerCase()
+  .includes(searchItem.toLowerCase()) ||
+  recipe.ustensils.join().toLowerCase().includes(searchItem.toLowerCase()) ||
+  joinIngredient(recipe.ingredients).includes(searchItem.toLowerCase()));
+
+  return result;
+}
 
 // ------------------------------ CARD FACTORY ------------------------------
-function recipesDisplay() {
-  let filterResults = recipes.filter((recipe) => recipe.name.toLowerCase().includes(inputForm.value.toLowerCase()));
-  recipes = [...filterResults];
-  console.log(recipes);
+
+function recipesDisplay(e) {
+
+  // SEARCH RECIPES ---------------
+  let myResult = recherchePrincipale(recipes, searchItem);  
 
   if (recipes.length == 0) {
     result.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
     chercher « tarte aux pommes », « poisson », etc...</h4>`;
     cardSection.innerHTML = '';
   } else if (recipes.length > 0) {
-    cardSection.innerHTML = filterResults.map((recipe) => {
+    cardSection.innerHTML = myResult.map((recipe) => {
       let ingredientsArray = [];
       let ingredients = recipe.ingredients;
+      let appliances = recipe.appliance;
+      let ustensils = recipe.ustensils;
 
       for (let i = 0; i < ingredients.length; i++) {
         let ingredient = recipe.ingredients[i].ingredient;
         let quantity = recipe.ingredients[i].quantity;
         let unit = recipe.ingredients[i].unit;
+
+        // filterByIngredients(recipe, ingredient);
 
         if (!quantity && !unit) {
           ingredientsArray.push(`<dd><strong>${ingredient}</strong></dd>`);
@@ -31,6 +58,7 @@ function recipesDisplay() {
           ingredientsArray.push(`<dd><strong>${ingredient}: </strong>${quantity}${unit}</dd>`);
         }
       }
+
       // console.log(ingredientsArray);
 
       return `
@@ -78,6 +106,50 @@ function recipesDisplay() {
       .join("");
     result.innerHTML = '';
   }
-
 };
 
+
+
+
+
+
+// let filterResults = recipes.filter((recipe) => recipe.name.toLowerCase().includes(inputForm.value.toLowerCase()));
+
+  // recipes = [...myResult];
+  // console.log(recipes);
+
+
+  // function recipesSort(e) {
+  //   for (recipe of recipes) {
+  //     const ingredients = recipe.ingredients;
+  //     const appliances = recipe.appliance;
+  //     const ustensils = recipe.ustensils;
+  //     // console.log(ingredients);
+  //     // console.log(appliances);
+  //     // console.log(ustensils);
+  
+  //     inputForm.addEventListener('input', (e) => {
+  //       // SEARCH INGREDIENTS ---------------
+  //       for (i = 0; i < ingredients.length; i++) {
+  //         if (e.target.value === ingredients[i].ingredient.toLowerCase()) {
+  //           // console.log(ingredients[i].ingredient);
+  //           let filterResultIngredient = recipes.filter((recipe) => recipe.ingredients[i].ingredient.toLowerCase().includes(inputForm.value.toLowerCase()));
+  //           // recipes = [...filterResults];
+  //           // console.log(recipes);
+  //           // console.log(filterResultIngredient);
+  //           // console.log(recipe.ingredients[i].ingredient);
+  //         }
+  //       };
+  
+  //       // SEARCH USTENSILS ---------------
+  //       for (ustensil of ustensils) {
+  //         if (e.target.value === ustensil.toLowerCase()) {
+  //           let filterResultUstensil = recipes.filter((recipe) => recipe.ustensil.toLowerCase().includes(inputForm.value.toLowerCase()));
+  //           // recipesUstensil = [...filterResultUstensil];
+  //           console.log(filterResultUstensil);
+  //           // console.log(recipesUstensil);
+  //         }
+  //       };
+  //     });
+  //   };
+  // };

@@ -22,12 +22,13 @@ function dropdown() {
     let allIngredients = recipes.reduce((acc, curVal) => acc.concat(curVal.ingredients), []);
     let ingredientInIngredients = allIngredients.reduce((acc, curVal) => acc.concat(curVal.ingredient.toLowerCase()), []);
     let ingredientsWithNoDouble = new Set(ingredientInIngredients);
-
+    
     dropdownIngredientItem.innerHTML = '';
-
+    
     for (let ingredient of ingredientsWithNoDouble) {
         dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
     }
+
 
     inputSearch[0].onfocus = () => {
         dropdownMenu[0].style.display = 'block';
@@ -50,6 +51,9 @@ function dropdown() {
     // SORT APPLIANCE ------------------------------
     let allAppliances = recipes.reduce((acc, curVal) => acc.concat(curVal.appliance.toLowerCase()), []);
     let applianceWithNoDouble = new Set(allAppliances);
+
+    dropdownApplianceItem.innerHTML = '';
+
 
     for (let appliance of applianceWithNoDouble) {
         dropdownApplianceItem.innerHTML += `<dd class='col sort-item'>${appliance}</dd>`;
@@ -83,6 +87,8 @@ function dropdown() {
     let lowerCaseUstensils = allUstensils.map((elm) => elm.toLowerCase());
     let ustensilsWithNoDouble = new Set(lowerCaseUstensils);
 
+    dropdownUstensilItem.innerHTML = '';
+
     for (let ustensil of ustensilsWithNoDouble) {
         dropdownUstensilItem.innerHTML += `<dd class='col sort-item'>${ustensil}</dd>`;
         // console.log(ustensil);
@@ -102,7 +108,7 @@ function dropdown() {
 
             for (ustensil of filteredUst) {
                 dropdownUstensilItem.innerHTML += `<dd class='col-3 sort-item'>${ustensil}</dd>`;
-                console.log(ustensil);
+                // console.log(ustensil);
             }
         })
     }
@@ -111,6 +117,7 @@ function dropdown() {
 
     //  DROPDOWN BUTTON ------------------------------
     inputFunction();
+    // filterByIngredients(recipes, ingredient, appliance, ustensil);
 }
 dropdown();
 
@@ -200,20 +207,29 @@ function inputFunction() {
 dropdownIngredientItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
     tagSection.innerHTML += sortTag(e, '#0069d9');
+    // tagFilter(e);
+    // recipesSort();
     closeBtn();
+    searchMeals(e);
+    tagIngredientFilter(e);
 });
 
 dropdownApplianceItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
     tagSection.innerHTML += sortTag(e, '#68d9a4');
-    // closeTag.style.backgroundColor = '#68d9a4 !important';
+    // tagFilter(e);
     closeBtn();
+    searchMeals(e);
+    tagIngredientFilter(e);
 });
 
 dropdownUstensilItem.addEventListener('click', (e) => {
     // console.log(e.target.textContent);
     tagSection.innerHTML += sortTag(e, '#ed6454');
+    // tagFilter(e);
     closeBtn();
+    searchMeals(e);
+    tagIngredientFilter(e);
 });
 
 

@@ -22,7 +22,6 @@ function searchMeals(e) {
   e.preventDefault();
   if (inputForm.value.length >= 3) {
     fetchMeals(e.target.value).then(() => recipesDisplay()); // Affiche en temps reel les recettes
-    
   } else if (inputForm.value.length === 0) {
     fetchMeals();
   }
@@ -39,4 +38,5 @@ inputForm.addEventListener('input', searchMeals);
 
 // INPUT SEARCH BUTTON ------------------------------
 // searchButton.addEventListener('click', searchMeals);
+
 
