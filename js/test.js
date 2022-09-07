@@ -1725,7 +1725,7 @@ const recipes = [
     }
 ];
 let searchItem = 'bol';
-
+let searchDropdownButton = 'fraise';
 
 function joinIngredient(array) {
     let ingredientList = [];
@@ -1748,5 +1748,5 @@ function recherchePrincipale(listOfRecipes, itemToSearch) {
 }
 let myResult = recherchePrincipale(recipes, searchItem);
 
-console.log(myResult);
+// console.log(myResult);
 

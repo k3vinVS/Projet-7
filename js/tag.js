@@ -1,23 +1,22 @@
 // DOM ELEMENTS ------------------------------
-const tagSection = document.querySelector('.tag-section');
-const tagEl = document.querySelectorAll('.tag');
-const closeTag = document.querySelectorAll('.close-tag');
-const sortItem = document.querySelectorAll('.sort-item');
+const tagSection = document.querySelector(".tag-section");
+const tagEl = document.querySelectorAll(".tag");
+const closeTag = document.querySelectorAll(".close-tag");
+const sortItem = document.querySelectorAll(".sort-item");
 
 // ------------------------------ CLOSE SORT TAGS ------------------------------
 
 function closeBtn() {
-  const tagEl = document.querySelectorAll('.tag');
-  const closeTag = document.querySelectorAll('.close-tag');
+  const tagEl = document.querySelectorAll(".tag");
+  const closeTag = document.querySelectorAll(".close-tag");
 
   for (let i = 0; i < closeTag.length; i++) {
-    closeTag[i].addEventListener('click', (e) => {
+    closeTag[i].addEventListener("click", (e) => {
       // console.log(i);
       tagEl[i].remove();
-    })
+    });
   }
 }
-
 
 // ------------------------------ SORT TAGS ------------------------------
 function sortTag(e, bgParent) {
@@ -44,37 +43,4 @@ function sortTag(e, bgParent) {
             </div>
       `;
   return divTagHtml;
-};
-
-
-function tagIngredientFilter(e) {
-  // console.log(e.target.textContent);
-
-  for (recipe of recipes) {
-    // SEARCH INGREDIENTS ---------------
-    const ingredients = recipe.ingredients;
-    for (i = 0; i < ingredients.length; i++) {
-      if (e.target.textContent.toLowerCase() === recipe.ingredients[i].ingredient.toLowerCase()) {
-        console.log(e.target.textContent);
-      }
-    }
-
-    // SEARCH USTENSILS ---------------
-    const ustensils = recipe.ustensils;
-    for (j = 0; j < ustensils.length; j++) {
-      if (e.target.textContent.toLowerCase() === recipe.ustensils[j].toLowerCase()) {
-        console.log(e.target.textContent);
-      }
-    }
-
-  }
-
-  // SEARCH APPLIANCES ---------------
-  let filterAppliance = recipes.filter((recipe) => recipe.appliance.toLowerCase().includes(e.target.textContent.toLowerCase()));
-  console.log(filterAppliance);
-
-
-  // if(e.target.textContent === recipe.ingredients){
-  //   console.log('test ingredient tag');
-  // }
 }

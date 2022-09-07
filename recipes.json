@@ -655,7 +655,7 @@
         {
           "ingredient": "Lait",
           "quantity": 1,
-          "unit": "litres"
+          "unit": "litre"
         },
         {
           "ingredient": "Sucre glace",
@@ -1376,7 +1376,7 @@
         {
           "ingredient": "Eau",
           "quantity": 1,
-          "unit": "Litres"
+          "unit": "Litre"
         },
         {
           "ingredient": "Citron Vert",
@@ -1493,7 +1493,7 @@
         {
           "ingredient": "Lait",
           "quantity": 1,
-          "unit": "litres"
+          "unit": "litre"
         },
         {
           "ingredient": "Chocolat",
