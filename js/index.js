@@ -19,10 +19,13 @@ async function fetchMeals() {
 // INPUT RECIPES SEARCH ------------------------------
 function searchMeals(e) {
   e.preventDefault();
+
   if (inputForm.value.length >= 3) {
-    fetchMeals().then(() => recipesDisplay()); // Affiche en temps reel les recettes
+    // fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
+    fetchMeals().then(() => searchInputMeals()); // Affiche les recettes triées de l'input
   } else if (inputForm.value.length === 0) {
-    fetchMeals();
+    // fetchMeals();
+    fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
   }
 }
 

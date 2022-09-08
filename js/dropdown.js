@@ -217,13 +217,15 @@ function inputFunction() {
 }
 
 // ADD TO TAG
-function dropdownFilter(e) {
+function dropdownFilter(e, searchTag) {
   dropdownIngredientItem.addEventListener("click", (e) => {
     // console.log(e.target.textContent);
+    // searchTag = e.target.innerHTML;
     tagSection.innerHTML += sortTag(e, "#0069d9");
     closeBtn();
     searchTagMeals(e);
     searchMeals(e);
+    recipesDisplay(e);
     // tagFilter(e);
     // tagIngredientFilter(e);
   });

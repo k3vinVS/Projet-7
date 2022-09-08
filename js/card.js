@@ -76,6 +76,7 @@ function searchInputMeals() {
   let resultList = recherchePrincipale(recipes, searchItem);
   recipes = [...resultList];
   // console.log(recipes);
+  recipesDisplay();
 }
 
 // Recherche des recettes grâce aux tags
@@ -98,6 +99,7 @@ function searchTagMeals(e) {
   recipes = [...resultTagList];
   console.log(searchTag);
   console.log(recipes);
+  recipesDisplay();
 }
 // searchTagMeals();
 
@@ -105,8 +107,13 @@ function searchTagMeals(e) {
 
 // Affiche le resultat des recherches de recettes ou tag
 function recipesDisplay(e) {
-  searchInputMeals();
+  // searchInputMeals();
   // searchTagMeals(e);
+
+  if (inputForm.value === "") {
+    // console.log('test 0 input');
+    // searchTagMeals(e);
+  }
 
   // SEARCH RECIPES ---------------
   if (recipes !== undefined) {
