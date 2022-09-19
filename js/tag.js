@@ -14,13 +14,20 @@ function closeBtn() {
     closeTag[i].addEventListener("click", (e) => {
       // console.log(i);
       tagEl[i].remove();
+      tagArray.splice(i, 1);
+      // Mettre a jour la liste des recettes
+      fetchMeals();
+      searchTagMeals();
+      console.log(tagArray);
+      // if(tagArray.length == 0){
+      //   console.log('test tagSection');
+      // }
     });
   }
 }
 
 // ------------------------------ SORT TAGS ------------------------------
 function sortTag(e, bgParent) {
-  // console.log(e.target);
   let divTagHtml = `
       <div
               class="tag text-center d-inline-flex justify-content-around align-items-center p-2 rounded"

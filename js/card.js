@@ -1,9 +1,11 @@
 // DOM ELEMENTS
 const cardSection = document.querySelector(".card-section");
-const tag = document.querySelector(".tag");
+// const tag = document.querySelector(".tag");
 let recipes = [];
 
 // ------------------------------ FUNCTIONS ------------------------------
+
+// --------------------- SORT INPUT ---------------------
 
 // Rassemble les ingredients d'une recette dans une string
 function joinIngredient(array) {
@@ -75,17 +77,19 @@ function searchInputMeals() {
   let searchItem = inputForm.value;
   let resultList = recherchePrincipale(recipes, searchItem);
   recipes = [...resultList];
-  // console.log(recipes);
-  recipesDisplay();
+  console.log(recipes);
+  // recipesDisplay();
 }
+
+// --------------------- SORT TAG ---------------------
 
 // Recherche des recettes grâce aux tags
 function tagFilter(e, listOfRecipes, searchTag) {
   let resultTag = listOfRecipes.filter(
     (recipe) =>
-      joinIngredient(recipe.ingredients).includes(searchTag.toLowerCase()) ||
-      recipe.appliance.toLowerCase().includes(searchTag.toLowerCase()) ||
-      recipe.ustensils.join().toLowerCase().includes(searchTag.toLowerCase())
+      joinIngredient(recipe.ingredients).includes(searchTag) ||
+      recipe.appliance.toLowerCase().includes(searchTag) ||
+      recipe.ustensils.join().toLowerCase().includes(searchTag)
   );
   // console.log(searchTag);
   // console.log(resultTag);
@@ -94,26 +98,26 @@ function tagFilter(e, listOfRecipes, searchTag) {
 
 // Tri les recettes en fonction des tags sélectionnés
 function searchTagMeals(e) {
-  let searchTag = e.target.textContent;
+  // let searchTag = e.target.textContent || e.target.innerText;
+  let searchTag = tagArray;
+  // console.log(searchTag);
   let resultTagList = tagFilter(e, recipes, searchTag);
   recipes = [...resultTagList];
-  console.log(searchTag);
   console.log(recipes);
-  recipesDisplay();
+  // recipesDisplay();
 }
-// searchTagMeals();
-
 // ------------------------------ CARD FACTORY ------------------------------
 
 // Affiche le resultat des recherches de recettes ou tag
 function recipesDisplay(e) {
+  if (inputForm.value.length > 2) {
+    searchInputMeals();
+    searchTagMeals();
+  } else {
+    searchTagMeals();
+  };
   // searchInputMeals();
-  // searchTagMeals(e);
-
-  if (inputForm.value === "") {
-    // console.log('test 0 input');
-    // searchTagMeals(e);
-  }
+  // searchTagMeals();
 
   // SEARCH RECIPES ---------------
   if (recipes !== undefined) {
