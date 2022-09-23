@@ -116,8 +116,6 @@ function recipesDisplay(e) {
   } else {
     searchTagMeals();
   };
-  // searchInputMeals();
-  // searchTagMeals();
 
   // SEARCH RECIPES ---------------
   if (recipes !== undefined) {

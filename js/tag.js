@@ -19,9 +19,6 @@ function closeBtn() {
       fetchMeals();
       searchTagMeals();
       console.log(tagArray);
-      // if(tagArray.length == 0){
-      //   console.log('test tagSection');
-      // }
     });
   }
 }

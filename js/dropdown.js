@@ -38,7 +38,7 @@ function dropdown(e) {
     dropdownIngredientItem.innerHTML += `<dd class='col sort-item'>${ingredient}</dd>`;
   }
 
-  inputSearch[0].onfocus = () => {
+  inputSearch[0].onclick = () => {
     dropdownMenu[0].style.display = "block";
     inputSearch[0].addEventListener("input", (e) => {
       const filteredIngredients = ingredientInIngredients.filter((ele, pos) => {
@@ -171,27 +171,41 @@ function inputFunction() {
   const btn = document.querySelectorAll(".sort-button");
   const textBtn = document.querySelectorAll(".search-text-button");
   const inputSearch = document.querySelectorAll(".input-search");
+  const sortItem = document.querySelectorAll(".sort-item");
 
   for (let i = 0; i < btn.length; i++) {
-    btn[i].onclick = () => {
+    btn[i].onclick = (e) => {
       textBtn[i].innerText = "";
       inputSearch[i].style.display = "inline-block";
       inputSearch[i].style.border = "none";
+      console.log(e.target.style);
     };
 
+    dropdownMenu[i].onclick = () => {
+      textButton();
+    };
     btn[i].onblur = () => {
+      textButton();
+      dropdownMenu[i].style.display = "none";
+    };
+    inputSearch[i].onblur = () => {
+      textButton();
+      dropdownMenu[i].style.display = "none";
+    };
+
+    function textButton() {
       // dropdownMenu[i].style.display = "none";
       inputSearch[i].style.display = "none";
       inputSearch[i].value = "";
 
-      if (btn[i].style.backgroundColor === "") {
-        textBtn[i].textContent = "Ingredients";
+      if (btn[i].style.backgroundColor === "rgb(237, 100, 84)") {
+        textBtn[i].textContent = "Ustensiles";
       } else if (btn[i].style.backgroundColor === "rgb(104, 217, 164)") {
         textBtn[i].textContent = "Appareils";
       } else {
-        textBtn[i].textContent = "Ustensiles";
+        textBtn[i].textContent = "Ingredients";
       }
-    };
+    }
   }
 }
 
@@ -201,7 +215,8 @@ let tagArray = [];
 // PUSH THE TEXT INTO AN ARRAY
 function getTag(e) {
   tagArray.push(e.target.textContent);
-  console.log(tagArray);
+  fetchMeals();
+  // console.log(tagArray);
 }
 
 // GET THE TEXT ON THE DROPDOWN
