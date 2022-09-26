@@ -17,7 +17,7 @@ function closeBtn() {
       tagArray.splice(i, 1);
       // Mettre a jour la liste des recettes
       fetchMeals();
-      searchTagMeals();
+      // searchTagMeals();
       console.log(tagArray);
     });
   }

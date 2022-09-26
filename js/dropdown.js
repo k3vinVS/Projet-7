@@ -174,27 +174,28 @@ function inputFunction() {
   const sortItem = document.querySelectorAll(".sort-item");
 
   for (let i = 0; i < btn.length; i++) {
-    btn[i].onclick = (e) => {
+    btn[i].onclick = () => {
       textBtn[i].innerText = "";
       inputSearch[i].style.display = "inline-block";
       inputSearch[i].style.border = "none";
-      console.log(e.target.style);
     };
 
     dropdownMenu[i].onclick = () => {
       textButton();
+      // console.log(e.target.textContent);
     };
+
     btn[i].onblur = () => {
       textButton();
       dropdownMenu[i].style.display = "none";
     };
+
     inputSearch[i].onblur = () => {
       textButton();
       dropdownMenu[i].style.display = "none";
     };
 
     function textButton() {
-      // dropdownMenu[i].style.display = "none";
       inputSearch[i].style.display = "none";
       inputSearch[i].value = "";
 
@@ -215,7 +216,6 @@ let tagArray = [];
 // PUSH THE TEXT INTO AN ARRAY
 function getTag(e) {
   tagArray.push(e.target.textContent);
-  fetchMeals();
   // console.log(tagArray);
 }
 

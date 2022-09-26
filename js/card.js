@@ -77,7 +77,7 @@ function searchInputMeals() {
   let searchItem = inputForm.value;
   let resultList = recherchePrincipale(recipes, searchItem);
   recipes = [...resultList];
-  console.log(recipes);
+  // console.log(recipes);
   // recipesDisplay();
 }
 
@@ -98,14 +98,14 @@ function tagFilter(e, listOfRecipes, searchTag) {
 
 // Tri les recettes en fonction des tags sélectionnés
 function searchTagMeals(e) {
-  // let searchTag = e.target.textContent || e.target.innerText;
   let searchTag = tagArray;
   // console.log(searchTag);
   let resultTagList = tagFilter(e, recipes, searchTag);
   recipes = [...resultTagList];
-  console.log(recipes);
+  // console.log(recipes);
   // recipesDisplay();
 }
+
 // ------------------------------ CARD FACTORY ------------------------------
 
 // Affiche le resultat des recherches de recettes ou tag
@@ -115,8 +115,9 @@ function recipesDisplay(e) {
     searchTagMeals();
   } else {
     searchTagMeals();
-  };
-
+  }
+  console.log(recipes);
+  
   // SEARCH RECIPES ---------------
   if (recipes !== undefined) {
     if (recipes.length == 0) {
@@ -135,8 +136,6 @@ function recipesDisplay(e) {
             let ingredient = recipe.ingredients[i].ingredient;
             let quantity = recipe.ingredients[i].quantity;
             let unit = recipe.ingredients[i].unit;
-
-            // filterByIngredients(recipe, ingredient);
 
             if (!quantity && !unit) {
               ingredientsArray.push(`<dd><strong>${ingredient}</strong></dd>`);

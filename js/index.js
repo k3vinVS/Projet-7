@@ -19,13 +19,15 @@ async function fetchMeals() {
 // INPUT RECIPES SEARCH ------------------------------
 function searchMeals(e) {
   // e.preventDefault();
+  fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
+  fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
 
-  if (inputForm.value.length > 2) {
-    // fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
-    fetchMeals().then(() => searchInputMeals()); // Affiche les recettes triées de l'input
-  } else {
-    fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
-  }
+  // if (inputForm.value.length > 2) {
+  //   fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
+  //   // fetchMeals().then(() => searchInputMeals()); // Affiche les recettes triées de l'input
+  // } else {
+  //   fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
+  // }
 }
 
 // LOAD RECIPES ------------------------------
