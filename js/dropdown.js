@@ -178,7 +178,7 @@ function inputFunction() {
       textBtn[i].innerText = "";
       inputSearch[i].style.display = "inline-block";
       inputSearch[i].style.border = "none";
-      console.log(e.target.style);
+      // console.log(e.target.style);
     };
 
     dropdownMenu[i].onclick = () => {

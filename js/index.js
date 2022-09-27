@@ -21,8 +21,8 @@ function searchMeals(e) {
   // e.preventDefault();
 
   if (inputForm.value.length > 2) {
-    // fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
     fetchMeals().then(() => searchInputMeals()); // Affiche les recettes triées de l'input
+    // fetchMeals().then(() => recipesDisplay());
   } else {
     fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
   }
