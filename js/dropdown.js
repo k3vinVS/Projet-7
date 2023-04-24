@@ -16,7 +16,7 @@ dropdownBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     fetchMeals().then(() => dropdown());
-    recipesDisplay();
+    // recipesDisplay();
   });
 });
 
@@ -216,7 +216,7 @@ let tagArray = [];
 // PUSH THE TEXT INTO AN ARRAY
 function getTag(e) {
   tagArray.push(e.target.textContent);
-  // console.log(tagArray);
+  console.log(tagArray);
 }
 
 // GET THE TEXT ON THE DROPDOWN
@@ -252,7 +252,8 @@ function tagSectionArray(item) {
       tagSection.innerHTML += sortTag(e, "#ed6454");
     }
     closeBtn();
-    searchMeals(e);
+    // searchMeals(e);
+    recipesDisplay();
   });
 }
 tagSectionArray(dropdownIngredientItem);

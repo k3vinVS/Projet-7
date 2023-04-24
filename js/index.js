@@ -19,7 +19,7 @@ async function fetchMeals() {
 // INPUT RECIPES SEARCH ------------------------------
 function searchMeals(e) {
   // e.preventDefault();
-  fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
+  // fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
   fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
 
   // if (inputForm.value.length > 2) {

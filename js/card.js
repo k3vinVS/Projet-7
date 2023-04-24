@@ -102,7 +102,7 @@ function searchTagMeals(e) {
   // console.log(searchTag);
   let resultTagList = tagFilter(e, recipes, searchTag);
   recipes = [...resultTagList];
-  // console.log(recipes);
+  console.log(recipes);
   // recipesDisplay();
 }
 
@@ -116,8 +116,8 @@ function recipesDisplay(e) {
   } else {
     searchTagMeals();
   }
-  console.log(recipes);
-  
+  // console.log(recipes);
+
   // SEARCH RECIPES ---------------
   if (recipes !== undefined) {
     if (recipes.length == 0) {

@@ -1,3 +1,4 @@
 {
-    "eslint.alwaysShowStatus": false
+    "eslint.alwaysShowStatus": false,
+    "liveServer.settings.port": 5501
 }
