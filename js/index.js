@@ -1,51 +1,122 @@
-// DOM ELEMENTS ------------------------------
+const inputForm = document.getElementById("input-form");
+const title = document.querySelector(".text-center");
+const search = document.querySelector(".search");
+const noResult = document.getElementById("no-result");
 
-const form = document.querySelector("form");
-const inputForm = document.getElementById("search-input");
-const searchButton = document.querySelector(".search");
-const result = document.getElementById("result");
 
-// ------------------------------ FETCH ------------------------------
-async function fetchMeals() {
-  await fetch("./recipes.json")
-    .then((res) => res.json())
-    .then((data) => (recipes = data.recipes))
-    .catch((err) => console.log(err));
+// console.log(search);
 
-  // console.log(recipes);
-  recipesDisplay();
+// Remets à zéro les cartes de recettes --------------------------------------------
+title.addEventListener("click", () => {
+  recipeCard(recipes);
+});
+
+// Efface l'input et conserve les cartes triées ------------------------------------
+search.addEventListener("click", () => {
+  inputForm.value = ""; // Remise à zéro de l'input
+});
+
+// INPUT RECIPES SEARCH -----------------------------------------------------------
+function joinIngredient(array) {
+  let ingredientList = [];
+  array.filter((item) => ingredientList.push(item.ingredient));
+  return ingredientList.join().toLowerCase();
 }
 
-// INPUT RECIPES SEARCH ------------------------------
-function searchMeals(e) {
-  // e.preventDefault();
-  // fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
-  fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
-
-  // if (inputForm.value.length > 2) {
-  //   fetchMeals().then(() => recipesDisplay()); // Affiche en temps réel les recettes
-  //   // fetchMeals().then(() => searchInputMeals()); // Affiche les recettes triées de l'input
-  // } else {
-  //   fetchMeals().then(() => searchTagMeals(e)); // Affiche les recettes triées par les tags
-  // }
+// Fonction de tri des recettes de la variable 'recipes' --------------------------
+function recherchePrincipale(listOfRecipes, searchItem) {
+  let resultRecipe = listOfRecipes.filter(
+    (recipe) =>
+      recipe.name
+        .toLowerCase() // Mets le texte en minuscule
+        .normalize("NFD") // Normalise le texte pour le traitement des caractères spéciaux
+        .replace(/[\u0300-\u036f]/g, "") // Complète le traitement du texte pour tri des mots en version non accentués
+        .includes(
+          searchItem // Texte entré dans l'input du formulaire
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+        ) ||
+      recipe.description
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .includes(
+          searchItem
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+        ) ||
+      recipe.appliance
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .includes(
+          searchItem
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+        ) ||
+      recipe.ustensils
+        .join()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .includes(
+          searchItem
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+        ) ||
+      joinIngredient(recipe.ingredients)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .includes(
+          searchItem
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+        )
+  );
+  // console.log(resultRecipe);
+  return resultRecipe;
 }
 
-// LOAD RECIPES ------------------------------
-window.addEventListener("load", fetchMeals);
+// Fonction de recherche de recettes à partir d'une entrée dans l'input du formulaire
+function searchInputMeals() {
+  if (inputForm.value.length > 2) {
+    let searchItem = inputForm.value;
+    let resultList = recherchePrincipale(recipes, searchItem);
+    recipesArray = [...resultList];
+    recipeCard(recipesArray);
+    console.log(recipesArray);
+  } else {
+    recipeCard(recipes);
+  }
+}
 
-// INPUT SEARCH ------------------------------
-inputForm.addEventListener("input", searchMeals);
+inputForm.addEventListener("input", searchInputMeals);
+// window.addEventListener('load', recipeCard(recipes));
 
-// SEARCH FORM ------------------------------
-// form.addEventListener('submit', searchMeals);
+// TAG RECIPES SEARCH
+// Recherche des recettes grâce aux tags
+function tagFilter(listOfRecipes, searchTag) {
+  let resultTag = listOfRecipes.filter(
+    (recipe) =>
+      joinIngredient(recipe.ingredients).includes(searchTag) ||
+      recipe.appliance.toLowerCase().includes(searchTag) ||
+      recipe.ustensils.join().toLowerCase().includes(searchTag)
+  );
+  // console.log(searchTag);
+  // console.log(resultTag);
+  return resultTag;
+}
 
-// INPUT SEARCH BUTTON ------------------------------
-// searchButton.addEventListener('click', searchMeals);
-
-// ANOTHER INPUT SEARCH --------------------------
-// inputForm.addEventListener("input", (e) => {
-//   let searchItem = e.target.value;
-//   let resultList = recherchePrincipale(recipes, searchItem);
-//   recipes = [...resultList];
-//   recipesDisplay(recipes);
-// });
+// Tri les recettes en fonction des tags sélectionnés
+function searchTagMeals(e) {
+  let searchTag = tagArray;
+  let resultTagList = tagFilter(recipes, searchTag);
+  recipesArray = [...resultTagList];
+  console.log(recipesArray);
+  recipeCard(recipesArray);
+}
