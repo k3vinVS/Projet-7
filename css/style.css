@@ -1,16 +1,20 @@
 * {
   font-family: "lato", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 header h1,
-h2 {
+svg {
   color: #d04f4f;
   font-size: 36px;
   line-height: 46.87px;
   text-align: center;
+  cursor: pointer;
 }
 
-#search-input {
+#input-form {
   max-width: 1240px;
   height: 69px;
   background-color: #e7e7e7;
@@ -59,14 +63,14 @@ h2 {
   margin: 0;
 }
 
-.input-search {
+.input-search-dropdown {
   display: none;
   color: white;
   background: none;
   outline: none;
 }
 
-.input-search::placeholder {
+.input-search-dropdown::placeholder {
   opacity: 0.7;
   font-weight: 700;
   font-size: 18px;
@@ -77,6 +81,7 @@ h2 {
 .dropdown-menu {
   min-width: 170px;
   min-height: 69px;
+  max-width: 92vw;
   width: auto;
   height: auto;
   border-radius: 0 5px 5px 5px;
@@ -105,7 +110,7 @@ h2 {
 }
 
 .sort-item {
-  min-width: 225px;
+  min-width: 177px;
   width: auto;
   font-size: 18px;
   line-height: 21.6px;
@@ -116,19 +121,15 @@ h2 {
   text-overflow: ellipsis;
 }
 
-.card {
-  max-width: 380px;
-  max-height: 364px;
-}
-
 .card-img {
-  height: 180px;
+  height: 238px;
   border-radius: 5px 5px 0 0;
   background-color: #c7bebe;
 }
 
 .card-body {
-  height: 186px;
+  height: 238px;
+  padding: 1rem;
   background-color: #e7e7e7;
 }
 
@@ -162,10 +163,167 @@ h2 {
   text-overflow: ellipsis;
 }
 
+@media (max-width: 319px) {
+  #dropdown-container {
+    margin: auto 15px;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-group {
+    margin-right: 0 !important;
+  }
+  .dropdown-menu {
+    width: 100%;
+  }
+  .dropdown-ingredient-item {
+    gap: 1rem;
+  }
+  .btn {
+    width: 100%;
+  }
+  .input-group {
+    width: 2rem;
+  }
+  #input-form {
+    height: 3rem;
+  }
+  #input-form::placeholder {
+    font-size: 1rem;
+  }
+  .search {
+    width: 3rem;
+  }
+  .input-search-dropdown {
+    margin-left: -1.5rem;
+    margin-right: -0.5rem;
+  }
+  .col-12 {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    width: 92%;
+  }
+  .card-body {
+    height: 100%;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropdown-ingredient-item,
+  .dropdown-appliance-item,
+  .dropdown-ustensil-item {
+    display: block;
+    justify-items: center;
+  }
+  .sort-item {
+    min-width: 225px;
+    width: 85%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding-left: 0 !important;
+  }
+}
+@media (min-width: 320px) and (max-width: 424px) {
+  #dropdown-container {
+    margin: auto 15px;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-group {
+    margin-right: 0 !important;
+  }
+  .dropdown-menu {
+    width: 100%;
+  }
+  .dropdown-ingredient-item {
+    gap: 1rem;
+  }
+  .btn {
+    width: 100%;
+  }
+  .input-group {
+    width: 2rem;
+  }
+  #input-form {
+    height: 3rem;
+  }
+  #input-form::placeholder {
+    font-size: 1rem;
+  }
+  .search {
+    width: 3rem;
+  }
+  .input-search {
+    margin-left: -1.5rem;
+    margin-right: -0.5rem;
+  }
+  .col-12 {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    width: 92%;
+  }
+  .card-body {
+    height: 100%;
+  }
+  .dropdown-ingredient-item,
+  .dropdown-appliance-item,
+  .dropdown-ustensil-item {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .sort-item {
+    width: 85%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+  .dropdown {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dropdown-ingredient-item,
+  .dropdown-appliance-item,
+  .dropdown-ustensil-item {
+    grid-template-columns: 1fr 1fr;
+  }
+  .sort-item {
+    height: 1.5rem;
+    width: 37vw;
+    min-width: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  .col-12 {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    width: 70vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 991px) {
+  .card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (min-width: 1200px) {
   .container {
-    max-width: 1240px;
-    padding: 0;
+    max-width: 90vw;
   }
 }
 
