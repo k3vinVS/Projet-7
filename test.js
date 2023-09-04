@@ -232,7 +232,7 @@ function sortRecipes() {
     cardSection.innerHTML = "";
   }
 
-  console.log(recettes.length);
+  console.log(recettes);
   console.log(tagRecettes);
 }
 
@@ -647,20 +647,22 @@ function tagSectionArray(item) {
     // console.log(tagArray);
 
     // FONCTION POUR SAVOIR S'IL Y A DES DOUBLONS -----------------------------------
-    function hasDuplicates(arr) {
-      return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
-    }
-
-    if (hasDuplicates(tagArray)) {
-      console.log("doublon");
-      tagArray.shift(-1);
-      console.log(tagArray);
-    } else {
-      console.log("pas de doublon");
-    }
-    // if (tagSection.innerText !== e.target.textContent) {
-    //   console.log("test doublon");
+    // function hasDuplicates(arr) {
+    //   return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
     // }
+
+    // if (hasDuplicates(tagArray)) {
+    //   console.log("doublon");
+    //   console.log(tagArray);
+    //   // tagArray.splice();
+    // } else {
+    //   console.log("pas de doublon");
+    // }
+    if (tagSection.innerText.includes(tagArray)) {
+      console.log("pas de doublon");
+    } else {
+      console.log('doublon');
+    }
 
     // let newTagArray = [...new Set(tagArray)];
     // tagArray = newTagArray;
