@@ -41,7 +41,7 @@
           <div class="row mb-3">
             <div class="col input-group">
               <input
-                id="search-input"
+                id="input-form"
                 class="form-control border-right-0"
                 type="text"
                 placeholder="Rechercher une recette"
@@ -66,12 +66,12 @@
             </div>
           </div>
         </form>
-        <small id="result"></small>
+        <small id="no-result"></small>
       </header>
 
       <!-- SORT TAGS -->
       <main>
-        <section>
+        <section id="dropdown-container">
           <div class="container">
             <div class="row mt-4 mb-3 tag-section"></div>
           </div>
@@ -91,11 +91,11 @@
                   <p class="search-text-button d-inline-flex">Ingredients</p>
                   <input
                     type="text"
-                    class="input-search"
+                    class="input-search-dropdown"
                     placeholder="Rechercher un ingrédient"
                     autocomplete="off"
                   />
-              </div>
+                </div>
                 <div class="container dropdown-menu bg-primary">
                   <div class="row-12 dropdown-ingredient-item"></div>
                 </div>
@@ -113,7 +113,7 @@
                 >
                   <p class="search-text-button d-inline-flex">Appareils</p>
                   <input
-                    class="input-search"
+                    class="input-search-dropdown"
                     placeholder="Rechercher un appareil"
                     autocomplete="off"
                   />
@@ -135,7 +135,7 @@
                 >
                   <p class="search-text-button d-inline-flex">Ustensiles</p>
                   <input
-                    class="input-search"
+                    class="input-search-dropdown"
                     placeholder="Rechercher un ustensile"
                     autocomplete="off"
                   />
@@ -170,9 +170,12 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/card.js"></script>
-    <script src="./js/tag.js"></script>
-    <script src="./js/dropdown.js"></script>
+    <script src="./js/recipes.js"></script>
+    <script src="test.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
+    <!-- <script src="./js/index2.js"></script> -->
+    <!-- <script src="./js/card.js"></script> -->
+    <!-- <script src="./js/tags.js"></script> -->
+    <!-- <script src="./js/sort_buttons.js"></script> -->
   </body>
 </html>
