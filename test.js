@@ -213,27 +213,26 @@ function sortRecipes() {
     }
   }
 
-  // TEXTE SI PAS DE RECETTES -------------------------------------------------------
-  if (recettes.length === 0) {
-    // console.log("pas de recettes");
-    noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
-    chercher « tarte aux pommes », « poisson », etc...</h4>`;
-    cardSection.innerHTML = "";
-  }
   
   // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES OU SI SELECTION D'UN TAG -----
   if (inputSearch.value.length < 3) {
     cardDisplay(recipes);
   } else if (inputSearch.value.length > 2) {
     cardDisplay(recettes);
-
+    
     // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -------
     sortDropdown(recettes);
   }
+  
+  // TEXTE SI PAS DE RECETTES -------------------------------------------------------
+  if (recettes.length === 0) {
+    console.log("pas de recettes");
+    noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
+    chercher « tarte aux pommes », « poisson », etc...</h4>`;
+    cardSection.innerHTML = "";
+  }
 
-
-
-  console.log(recettes);
+  console.log(recettes.length);
   console.log(tagRecettes);
 }
 

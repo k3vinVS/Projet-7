@@ -215,8 +215,8 @@ svg {
     align-items: center;
   }
   .dropdown-ingredient-item,
-  .dropdown-appliance-item,
-  .dropdown-ustensil-item {
+.dropdown-appliance-item,
+.dropdown-ustensil-item {
     display: block;
     justify-items: center;
   }
@@ -276,8 +276,8 @@ svg {
     height: 100%;
   }
   .dropdown-ingredient-item,
-  .dropdown-appliance-item,
-  .dropdown-ustensil-item {
+.dropdown-appliance-item,
+.dropdown-ustensil-item {
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr;
@@ -296,8 +296,8 @@ svg {
     flex-wrap: wrap;
   }
   .dropdown-ingredient-item,
-  .dropdown-appliance-item,
-  .dropdown-ustensil-item {
+.dropdown-appliance-item,
+.dropdown-ustensil-item {
     grid-template-columns: 1fr 1fr;
   }
   .sort-item {
