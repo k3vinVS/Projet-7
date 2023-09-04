@@ -20,12 +20,12 @@ let tagArray = [];
 let recettes;
 let tagRecettes;
 
-// Remets à zéro les cartes de recettes --------------------------------------------
+// Remets à zéro les cartes de recettes en cliquant sur le logo du site --------------------------------------------
 title.addEventListener("click", () => {
   location.reload();
 });
 
-// Efface l'input et conserve les cartes triées ------------------------------------
+// En cliquant sur la loupe de l'input, efface l'input et conserve les cartes triées ------------------------------------
 searching.addEventListener("click", (e) => {
   if (inputSearch.value.length < 3) {
     alert("Indiquer au moins 3 lettres pour trouver une recette");
@@ -213,13 +213,6 @@ function sortRecipes() {
     }
   }
 
-  // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES OU SI SELECTION D'UN TAG -----
-  if (inputSearch.value.length < 3) {
-    cardDisplay(recipes);
-  } else if (inputSearch.value.length > 2) {
-    cardDisplay(recettes);
-  }
-
   // TEXTE SI PAS DE RECETTES -------------------------------------------------------
   if (recettes.length === 0) {
     // console.log("pas de recettes");
@@ -227,9 +220,18 @@ function sortRecipes() {
     chercher « tarte aux pommes », « poisson », etc...</h4>`;
     cardSection.innerHTML = "";
   }
+  
+  // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES OU SI SELECTION D'UN TAG -----
+  if (inputSearch.value.length < 3) {
+    cardDisplay(recipes);
+  } else if (inputSearch.value.length > 2) {
+    cardDisplay(recettes);
 
-  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -------
-  sortDropdown(recettes);
+    // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -------
+    sortDropdown(recettes);
+  }
+
+
 
   console.log(recettes);
   console.log(tagRecettes);
