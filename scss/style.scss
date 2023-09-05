@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 * {
-  font-family: "lato", sans-serif;
+  font-family: "Lato", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  width: 1240px;
 }
 
 //---------------------- HEADER ----------------------
@@ -16,7 +22,8 @@ svg {
 }
 
 #input-form {
-  max-width: 1240px;
+  // max-width: 1240px;
+  max-width: 100%;
   height: 69px;
   background-color: #e7e7e7;
   color: black;
@@ -70,9 +77,11 @@ svg {
   color: white;
   background: none;
   outline: none;
+  width: 205px;
 }
 
 .input-search-dropdown::placeholder {
+  color: white;
   opacity: 0.7;
   font-weight: 700;
   font-size: 18px;
@@ -117,6 +126,7 @@ svg {
 .sort-item {
   min-width: 177px;
   width: auto;
+  font-weight: 400;
   font-size: 18px;
   line-height: 21.6px;
   color: white;
@@ -131,6 +141,7 @@ svg {
 //   max-width: 380px;
 //   max-height: 364px;
 // }
+
 .card-img {
   height: 238px;
   border-radius: 5px 5px 0 0;
@@ -141,6 +152,12 @@ svg {
   height: 238px;
   padding: 1rem;
   background-color: #e7e7e7;
+}
+
+.card-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.6px;
 }
 
 .text-ingredients {

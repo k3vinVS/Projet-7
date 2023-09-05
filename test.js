@@ -24,8 +24,9 @@ let tagRecettes;
 title.addEventListener("click", () => {
   location.reload();
 });
+// -------------------------------------------------------------------------
 
-// En cliquant sur la loupe de l'input, efface l'input et conserve les cartes triées ------------------------------------
+// En cliquant sur la loupe de l'input, efface l'input et conserve les cartes triées si plus de 3 lettres, sinon message d'erreur ------------------------------------------------------
 searching.addEventListener("click", (e) => {
   if (inputSearch.value.length < 3) {
     alert("Indiquer au moins 3 lettres pour trouver une recette");
@@ -35,6 +36,7 @@ searching.addEventListener("click", (e) => {
     cardDisplay(recettes);
   }
 });
+// -------------------------------------------------------------------------
 
 // ----------------------- VISUEL DES CARTES DE RECETTES -------------------
 function cardDisplay(recipes) {
@@ -213,30 +215,30 @@ function sortRecipes() {
     }
   }
 
-  
   // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES OU SI SELECTION D'UN TAG -----
   if (inputSearch.value.length < 3) {
     cardDisplay(recipes);
+    dropdownItem();
   } else if (inputSearch.value.length > 2) {
     cardDisplay(recettes);
-    
+
     // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -------
     sortDropdown(recettes);
   }
-  
+
   // TEXTE SI PAS DE RECETTES -------------------------------------------------------
   if (recettes.length === 0) {
-    console.log("pas de recettes");
+    // console.log("pas de recettes");
     noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
     chercher « tarte aux pommes », « poisson », etc...</h4>`;
     cardSection.innerHTML = "";
   }
 
-  console.log(recettes);
+  // console.log(recettes);
   console.log(tagRecettes);
 }
 
-inputSearch.addEventListener("input", sortRecipes);
+// inputSearch.addEventListener("input", sortRecipes);
 
 // ---------------- TRI DES RECETTES AVEC METHODE "FILTER" -----------------
 function sortRecipesMethod() {
@@ -328,8 +330,12 @@ function sortRecipesMethod() {
   // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES OU SI SELECTION D'UN TAG -----
   if (inputSearch.value.length < 3) {
     cardDisplay(recipes);
+    dropdownItem();
   } else if (inputSearch.value.length > 2) {
     cardDisplay(recettes);
+
+    // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS ------
+    sortDropdown(recettes);
   }
 
   // TEXTE SI PAS DE RECETTES -----------------------------------------------------
@@ -340,13 +346,10 @@ function sortRecipesMethod() {
     cardSection.innerHTML = "";
   }
 
-  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS ------
-  sortDropdown(recettes);
-
   console.log(recettes);
   console.log(tagRecettes);
 }
-// inputSearch.addEventListener("input", sortRecipesMethod);
+inputSearch.addEventListener("input", sortRecipesMethod);
 
 // ------------------------------- TAGS MODEL -------------------------------
 function displayTag(e, bgParent) {
@@ -644,26 +647,44 @@ function tagSectionArray(item) {
     // sortRecipesMethod(); // DEUXIEME METHODE DE TRI -------
     sortDropdown(tagRecettes);
     closeBtn();
-    // console.log(tagArray);
 
     // FONCTION POUR SAVOIR S'IL Y A DES DOUBLONS -----------------------------------
-    // function hasDuplicates(arr) {
-    //   return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
-    // }
+    function hasDuplicates(arr) {
+      return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
+    } // Vérifie si doublon dans un tableau ---
 
-    // if (hasDuplicates(tagArray)) {
+    // function findDuplicates(arr) {
+    //   const distinct = new Set(arr); // Pour améliorer les performances
+    //   const filtered = arr.filter(item => {
+    //     // Supprime l'élément de l'ensemble lors de la toute première rencontre
+    //     if(distinct.has(item)){
+    //       distinct.delete(item);
+    //     } else {
+    //       return item; // Renvoie l'élément lors des rencontres suivantes
+    //     }
+    //   });
+    //   return [...new Set(filtered)]
+    // }
+    // const duplicates = findDuplicates(tagArray);
+    // console.log(duplicates);
+
+    if (hasDuplicates(tagArray)) {
+      console.log("doublon");
+      console.log(tagArray);
+      e.preventDefault();
+    } else {
+      console.log("pas de doublon");
+    }
+
+    // if (tagArray.includes(e.target.textContent)) {
     //   console.log("doublon");
-    //   console.log(tagArray);
-    //   // tagArray.splice();
+    //   // console.log(dropdownIngredientItem.innerText);
+    //   e.preventDefault();
     // } else {
     //   console.log("pas de doublon");
     // }
-    if (tagSection.innerText.includes(tagArray)) {
-      console.log("pas de doublon");
-    } else {
-      console.log('doublon');
-    }
 
+    // console.log(dropdownIngredientItem.innerText);
     // let newTagArray = [...new Set(tagArray)];
     // tagArray = newTagArray;
     // console.log(tagArray);
