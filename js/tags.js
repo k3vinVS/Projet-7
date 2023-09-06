@@ -43,10 +43,16 @@ function closeBtn() {
       sortRecipes();
       sortDropdown(tagRecettes);
 
-      if (tagArray.length === 0 || inputSearch.value.length < 3) {
+
+      if (tagArray.length === 0) {
         cardDisplay(recipes);
         dropdownItem();
       }
+
+      if (inputSearch.value.length > 2) {
+        cardDisplay(recettes);
+        sortRecipes();
+      } 
     });
   }
 }

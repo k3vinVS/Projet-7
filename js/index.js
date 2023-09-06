@@ -118,10 +118,13 @@ function sortRecipes() {
   } else if (inputSearch.value.length > 2) {
     cardDisplay(recettes);
 
-    // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -------
+    // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -----
     sortDropdown(recettes);
   }
+
+  // SI INPUT VIDE, RAFRAICHIT LES DROPDOWNS -----
   if (inputSearch.value.length === 0) {
+    cardDisplay(tagRecettes);
     dropdownItem();
   }
 
