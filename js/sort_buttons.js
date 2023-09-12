@@ -192,8 +192,8 @@ function tagSectionArray(item) {
     //   // console.log("élément dans le tableau");
     //   e.target.setAttribute("disabled", "");
     // }
-    // sortRecipes(e.target.textContent, tagArray);
-    sortRecipesMethod(e.target.textContent, tagArray); // DEUXIEME METHODE DE TRI -------
+    sortRecipes(e.target.textContent, tagArray);
+    // sortRecipesMethod(e.target.textContent, tagArray); // DEUXIEME METHODE DE TRI -------
     closeBtn();
 
     // FONCTION POUR SAVOIR S'IL Y A DES DOUBLONS -----------------------------------

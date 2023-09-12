@@ -42,8 +42,8 @@ function closeBtn() {
       console.log(tagArray);
 
       // Mettre a jour la liste des recettes -------------------------------
-      // sortRecipes(e.target, tagArray);
-      sortRecipesMethod(e.target.textContent, tagArray);
+      sortRecipes(e.target.textContent, tagArray);
+      // sortRecipesMethod(e.target.textContent, tagArray);
       sortDropdown(tagRecettes);
 
       if (tagArray.length === 0) {
