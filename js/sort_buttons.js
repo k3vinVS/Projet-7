@@ -123,8 +123,6 @@ function dropdownSearch(
 
         // FILTRE LES APPAREILS EN FONCTION DE L'ENTREE DE L'INPUT -----------------
         dropdownApplianceItem.innerHTML = "";
-        // if (filteredApp) {
-        // }
 
         // AFFICHE LES APPAREILS TRIES CORRESPONDANTS A L'ENTREE DANS L'INPUT -----
         for (appliance of filteredApp) {
@@ -178,28 +176,54 @@ function tagSectionArray(item) {
   item.addEventListener("click", (e) => {
     if (item === dropdownIngredientItem) {
       tagSection.innerHTML += displayTag(e, "#0069d9");
-      tagArray.push(e.target.textContent);
-      // e.target.setAttribute("disabled", "");
+      // tagArray.push(e.target.textContent);
     } else if (item === dropdownApplianceItem) {
       tagSection.innerHTML += displayTag(e, "#68d9a4");
-      tagArray.push(e.target.textContent);
+      // tagArray.push(e.target.textContent);
     } else if (item === dropdownUstensilItem) {
       tagSection.innerHTML += displayTag(e, "#ed6454");
-      tagArray.push(e.target.textContent);
+      // tagArray.push(e.target.textContent);
     }
 
-    // if (tagArray.includes(e.target.textContent)) {
-    //   // console.log("élément dans le tableau");
-    //   e.target.setAttribute("disabled", "");
-    // }
-    sortRecipes(e.target.textContent, tagArray);
-    // sortRecipesMethod(e.target.textContent, tagArray); // DEUXIEME METHODE DE TRI -------
-    closeBtn();
+    tagArray.push(e.target.textContent);
+    if(tagArray.length == 1){
+      sortRecipes(tagArray, recipes);
+    } else {
+      sortRecipes(tagArray, recettes);
+    }
+    // Si recettes triées avec input, affinage des recettes avec tags -----
+    // let results = sortRecipes(e.target.textContent, recettes);
+    // recettes = [...results];
+    // cardDisplay(results);
 
-    // FONCTION POUR SAVOIR S'IL Y A DES DOUBLONS -----------------------------------
-    function hasDuplicates(arr) {
-      return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
-    } // Vérifie si doublon dans un tableau ---
+    // console.log(tagArray);
+    // if (tagArray.length !== 0 && inputSearch.value.length === 0) {
+    //   for (element of tagArray) {
+    //     // console.log(element);
+    //     let results = sortRecipes(element, recipes);
+    //     if (results) {
+    //       let newResults = sortRecipes(e.target.textContent, results);
+    //       // console.log(results);
+    //       console.log(newResults);
+    //       cardDisplay(newResults);
+    //     }
+    //   }
+    // }
+
+    // Pour chaque tag, tri et affichage  des recettes -----
+
+    // DEUXIEME METHODE DE TRI -------
+    // sortRecipesMethod(e.target.textContent, tagArray);
+
+    // Mets à zéro l'input de recherche si tag similaire -----
+    if (
+      inputSearch.value.toLowerCase() === e.target.textContent.toLowerCase()
+    ) {
+      inputSearch.value = "";
+    }
+
+    // Ferme le tag sélectionné et refait un tri et affichage des recettes -----
+    closeBtn();
   });
 }
 tagSectionArray(dropdownIngredientItem);
@@ -315,24 +339,7 @@ function sortDropdown(tagRecettes, recettes) {
       // console.log(ustensil);
       dropdownUstensilItem.innerHTML += `<dd class='col sort-item'>${ustensil}</dd>`;
     }
-
-    // EVITER LE CLIC SUR UN ELEMENT DEJA CLIQUE ------------------------------------
-
-    // if (tabIng.includes(tagArray)) {
-    //   console.log("doublon");
-    //   // console.log(dropdownIngredientItem.innerText);
-    //   // e.preventDefault();
-    // } else {
-    //   console.log("pas de doublon");
-    // }
-
-    // console.log(tagArray.includes(tabIng));
-
-    // console.log(tabIng);
-    // console.log(tagArray);
     // console.log(tagRecettes);
-    // console.log(tabIng[0] === tagArray[0]);
-    // console.log(tabIng.includes(tagArray));
   }
 }
 
@@ -346,3 +353,11 @@ function filterTabElement(tagArray, tagElements) {
   });
   return newTagElements;
 }
+
+// Fonction pour savoir s'il y a des doublons dans un tableau  -----------------------------------
+// function hasDuplicates(arr) {
+//   return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
+// }
+// function isUnique(item, position, array) {
+//   return array.indexOf(item) === position;
+// }

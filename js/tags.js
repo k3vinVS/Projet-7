@@ -33,20 +33,38 @@ function closeBtn() {
 
   for (let i = 0; i < closeTag.length; i++) {
     closeTag[i].addEventListener("click", (e) => {
-      // console.log(i);
-      // console.log(e.target.parentNode);
       tagEl[i].remove();
-      // tagArray.splice(tagEl[i], 1);
       tagArray.splice(i, 1);
+      // tagArray.splice(tagEl[i], 1);
 
       console.log(tagArray);
 
-      // Mettre a jour la liste des recettes -------------------------------
-      sortRecipes(e.target.textContent, tagArray);
-      // sortRecipesMethod(e.target.textContent, tagArray);
+      // MISE A JOUR DES DROPDOWNS -------------------------------
+      // Mis à jour des éléments des dropdowns -----
       sortDropdown(tagRecettes);
 
-      if (tagArray.length === 0) {
+      if(tagArray.length == 1){
+        sortRecipes(tagArray, recipes);
+      } else {
+        sortRecipes(tagArray, recettes);
+      }
+
+      // if (inputSearch.value.length > 2) {
+      //   let results = sortRecipes(inputSearch.value, recipes);
+      //   recettes = [...results];
+      //   cardDisplay(results);
+      // }
+
+      // Tri des recettes si tag enlevé -----
+      // tagArray.filter((recette) => sortRecipes(recette, tagArray));
+
+      // Si tagSection qui contient les tags est vide, remets à zéro les dropdowns, les recettes et le tagArray -----
+      if (
+        (tagSection.lastElementChild === null &&
+          inputSearch.value.length === 0) ||
+        (tagArray.length === 0 && inputSearch.value.length === 0)
+      ) {
+        tagArray = [];
         cardDisplay(recipes);
         dropdownIngredientItem.innerHTML = "";
         dropdownApplianceItem.innerHTML = "";
@@ -54,11 +72,21 @@ function closeBtn() {
         dropdownItem();
       }
 
-      if (inputSearch.value.length > 2) {
-        cardDisplay(recettes);
-        cardDisplay(tagRecettes);
-        sortRecipes();
-      }
+      // Si le tableau des tags est vide, remets à zéro les dropdowns -----
+      // if (tagArray.length === 0) {
+      //   cardDisplay(recipes);
+      //   dropdownIngredientItem.innerHTML = "";
+      //   dropdownApplianceItem.innerHTML = "";
+      //   dropdownUstensilItem.innerHTML = "";
+      //   dropdownItem();
+      // }
+
+      // MISE A JOUR DES RECETTES -------------------------------
+      // Si tag enlevé et élément dans input, tri des recettes en fonction de l'input -----
+      // if (inputSearch.value.length > 2) {
+      //   // console.log(tagArray);
+      //   sortRecipes(inputSearch.value, recettes);
+      // }
     });
   }
 
