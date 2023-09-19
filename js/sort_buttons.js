@@ -186,11 +186,12 @@ function tagSectionArray(item) {
     }
 
     tagArray.push(e.target.textContent);
-    if(tagArray.length == 1){
+    if (tagArray.length == 1) {
       sortRecipes(tagArray, recipes);
     } else {
       sortRecipes(tagArray, recettes);
     }
+    console.log(tagArray);
     // Si recettes triées avec input, affinage des recettes avec tags -----
     // let results = sortRecipes(e.target.textContent, recettes);
     // recettes = [...results];

@@ -104,20 +104,27 @@ function sortRecipes(arrayOfItems, currentRecipeArray) {
 
 // RECHERCHE DES RECETTES AVEC LES ENTREES DANS L'INPUT -----
 inputSearch.addEventListener("input", () => {
-  // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES -----
-  if (inputSearch.value.length > 2) {
-    let inputValue = inputSearch.value;
+  let inputValue = inputSearch.value;
 
+  // RECHERCHE DES RECETTES A PARTIR DE 3 CARACTERES -----
+  if (inputValue.length > 2) {
     if (tagArray.length == 0) {
       tagArray[0] = inputValue;
-
       sortRecipes(tagArray, recipes);
     } else {
-      tagArray[tagArray.length] = inputValue;
+      tagArray[tagArray.length - 1] = inputValue;
       sortRecipes(tagArray, recettes);
     }
-    // sortRecipes(inputSearch.value, recipes);
-  } else {
+  } else if (inputValue.length === 0) {
+    console.log("pas d'input");
+    tagArray.splice(inputValue, 1);
+    sortRecipes(tagArray, recipes);
+  }
+
+  // Si input vide et aucun tag, remise à zéro des recettes et ce qui s'y rattache -----
+  if (tagSection.lastElementChild === null && inputValue.length === 0) {
+    tagArray = [];
+    recettes = [];
     cardDisplay(recipes);
     dropdownIngredientItem.innerHTML = "";
     dropdownApplianceItem.innerHTML = "";

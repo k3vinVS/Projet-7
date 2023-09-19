@@ -43,28 +43,21 @@ function closeBtn() {
       // Mis à jour des éléments des dropdowns -----
       sortDropdown(tagRecettes);
 
-      if(tagArray.length == 1){
+      // MISE A JOUR DES RECETTES -------------------------------
+      if (tagArray.length == 1) {
+        console.log("1 élément présent");
         sortRecipes(tagArray, recipes);
-      } else {
+      } else if (tagArray.length > 1) {
+        console.log("plusieurs éléments présents");
         sortRecipes(tagArray, recettes);
-      }
-
-      // if (inputSearch.value.length > 2) {
-      //   let results = sortRecipes(inputSearch.value, recipes);
-      //   recettes = [...results];
-      //   cardDisplay(results);
-      // }
-
-      // Tri des recettes si tag enlevé -----
-      // tagArray.filter((recette) => sortRecipes(recette, tagArray));
-
-      // Si tagSection qui contient les tags est vide, remets à zéro les dropdowns, les recettes et le tagArray -----
-      if (
+      } else if (
         (tagSection.lastElementChild === null &&
           inputSearch.value.length === 0) ||
         (tagArray.length === 0 && inputSearch.value.length === 0)
       ) {
+        console.log("tableau vide");
         tagArray = [];
+        recettes = [];
         cardDisplay(recipes);
         dropdownIngredientItem.innerHTML = "";
         dropdownApplianceItem.innerHTML = "";
@@ -72,20 +65,22 @@ function closeBtn() {
         dropdownItem();
       }
 
-      // Si le tableau des tags est vide, remets à zéro les dropdowns -----
-      // if (tagArray.length === 0) {
+      // Tri des recettes si tag enlevé -----
+      // tagArray.filter((recette) => sortRecipes(recette, tagArray));
+
+      // Si tagSection qui contient les tags est vide, remets à zéro les dropdowns, les recettes et le tagArray -----
+      // if (
+      //   (tagSection.lastElementChild === null &&
+      //     inputSearch.value.length === 0) ||
+      //   (tagArray.length === 0 && inputSearch.value.length === 0)
+      // ) {
+      //   tagArray = [];
+      //   recettes = [];
       //   cardDisplay(recipes);
       //   dropdownIngredientItem.innerHTML = "";
       //   dropdownApplianceItem.innerHTML = "";
       //   dropdownUstensilItem.innerHTML = "";
       //   dropdownItem();
-      // }
-
-      // MISE A JOUR DES RECETTES -------------------------------
-      // Si tag enlevé et élément dans input, tri des recettes en fonction de l'input -----
-      // if (inputSearch.value.length > 2) {
-      //   // console.log(tagArray);
-      //   sortRecipes(inputSearch.value, recettes);
       // }
     });
   }
