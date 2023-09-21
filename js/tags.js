@@ -33,9 +33,12 @@ function closeBtn() {
 
   for (let i = 0; i < closeTag.length; i++) {
     closeTag[i].addEventListener("click", (e) => {
+      const elementToDelete = tagEl[i].textContent.trim();
       tagEl[i].remove();
-      tagArray.splice(i, 1);
-      // tagArray.splice(tagEl[i], 1);
+
+      const position = tagArray.indexOf(elementToDelete);
+      tagArray.splice(position, 1);
+      // tagArray.splice(i, 1);
 
       console.log(tagArray);
 
@@ -47,22 +50,9 @@ function closeBtn() {
       if (tagArray.length == 1) {
         console.log("1 élément présent");
         sortRecipes(tagArray, recipes);
-      } else if (tagArray.length > 1) {
+      } else {
         console.log("plusieurs éléments présents");
         sortRecipes(tagArray, recettes);
-      } else if (
-        (tagSection.lastElementChild === null &&
-          inputSearch.value.length === 0) ||
-        (tagArray.length === 0 && inputSearch.value.length === 0)
-      ) {
-        console.log("tableau vide");
-        tagArray = [];
-        recettes = [];
-        cardDisplay(recipes);
-        dropdownIngredientItem.innerHTML = "";
-        dropdownApplianceItem.innerHTML = "";
-        dropdownUstensilItem.innerHTML = "";
-        dropdownItem();
       }
 
       // Tri des recettes si tag enlevé -----
