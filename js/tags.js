@@ -49,16 +49,16 @@ function closeBtn() {
       // MISE A JOUR DES RECETTES -------------------------------
       if (tagArray.length == 1) {
         console.log("reste 1 élément présent");
-        // sortRecipes(tagArray, recipes);
-        sortRecipesMethod(tagArray, recipes);
+        sortRecipes(tagArray, recipes);
+        // sortRecipesMethod(tagArray, recipes);
       } else if (tagArray.length > 1) {
         console.log("reste plusieurs éléments présents");
-        // sortRecipes(tagArray, recipes);
-        sortRecipesMethod(tagArray, recipes);
+        sortRecipes(tagArray, recipes);
+        // sortRecipesMethod(tagArray, recipes);
       } else {
-        // sortRecipes(tagArray, recipes);
-        sortRecipesMethod(tagArray, recipes);
-
+        console.log("tableau vide");
+        sortRecipes(tagArray, recipes);
+        // sortRecipesMethod(tagArray, recipes);
       }
 
       // Tri des recettes si tag enlevé -----
