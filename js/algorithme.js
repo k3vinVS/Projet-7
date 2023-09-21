@@ -55,9 +55,10 @@ function sortRecipes(arrayOfItems, currentRecipeArray) {
         // console.log(array);
       } else {
         // TRI DES INGREDIENTS DE CHAQUE RECETTE ------------------------------
-        for (let j = 0; j < ingredient.length; j++) {
+        for (let k = 0; k < ingredient.length; k++) {
+          console.log(ingredient[k]);
           if (
-            ingredient[j].ingredient
+            ingredient[k].ingredient
               .toLowerCase()
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
