@@ -1,7 +1,3 @@
-// ------------------------------------- DOM ELEMENTS -------------------------------------
-// const cardSection = document.querySelector(".card-section");
-// const noResult = document.getElementById("no-result");
-
 // ----------------------- VISUEL DES CARTES DE RECETTES -------------------
 function cardDisplay(recipes) {
   cardSection.innerHTML = recipes

@@ -192,26 +192,8 @@ function tagSectionArray(item) {
     } else {
       console.log("plusieurs éléments présents dans le tableau");
       sortRecipes(tagArray, recettes);
-    } 
+    }
     console.log(tagArray);
-    // Si recettes triées avec input, affinage des recettes avec tags -----
-    // let results = sortRecipes(e.target.textContent, recettes);
-    // recettes = [...results];
-    // cardDisplay(results);
-
-    // console.log(tagArray);
-    // if (tagArray.length !== 0 && inputSearch.value.length === 0) {
-    //   for (element of tagArray) {
-    //     // console.log(element);
-    //     let results = sortRecipes(element, recipes);
-    //     if (results) {
-    //       let newResults = sortRecipes(e.target.textContent, results);
-    //       // console.log(results);
-    //       console.log(newResults);
-    //       cardDisplay(newResults);
-    //     }
-    //   }
-    // }
 
     // Mets à zéro l'input de recherche si tag similaire -----
     if (
@@ -348,5 +330,3 @@ function filterTabElement(tagArray, tagElements) {
   });
   return newTagElements;
 }
-
-

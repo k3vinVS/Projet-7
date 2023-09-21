@@ -43,7 +43,6 @@ function closeBtn() {
       console.log(tagArray);
 
       // MISE A JOUR DES DROPDOWNS -------------------------------
-      // Mis à jour des éléments des dropdowns -----
       sortDropdown(tagRecettes);
 
       // MISE A JOUR DES RECETTES -------------------------------
@@ -57,36 +56,6 @@ function closeBtn() {
         console.log("tableau vide");
         sortRecipes(tagArray, recipes);
       }
-
-      // Tri des recettes si tag enlevé -----
-      // tagArray.filter((recette) => sortRecipes(recette, tagArray));
-
-      // Si tagSection qui contient les tags est vide, remets à zéro les dropdowns, les recettes et le tagArray -----
-      // if (
-      //   (tagSection.lastElementChild === null &&
-      //     inputSearch.value.length === 0) ||
-      //   (tagArray.length === 0 && inputSearch.value.length === 0)
-      // ) {
-      //   tagArray = [];
-      //   recettes = [];
-      //   cardDisplay(recipes);
-      //   dropdownIngredientItem.innerHTML = "";
-      //   dropdownApplianceItem.innerHTML = "";
-      //   dropdownUstensilItem.innerHTML = "";
-      //   dropdownItem();
-      // }
     });
   }
-
-  // ------------------------------ DEUXIEME METHODE ------------------------------
-  // closeTag.forEach((element) => {
-  //   // console.log(element);
-  //   element.addEventListener("click", (e) => {
-  //     let tag = element.parentNode;
-  //     tag.remove();
-  //     tagArray.splice(element, 1);
-  //     console.log(tagArray);
-  //     // console.log(tagName);
-  //   });
-  // });
 }
