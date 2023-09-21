@@ -133,15 +133,3 @@ inputSearch.addEventListener("input", () => {
   }
   console.log(tagArray);
 });
-
-const fruits = ["orange", "banane", "kiwi"];
-const fruits2 = ["pastèque", "pêche", "pomme", "melon"];
-
-function searchInFruits(l, arrayOfFruits) {
-  let result = arrayOfFruits.filter((f) => f.includes(l));
-  return result;
-}
-const exemple = searchInFruits("p", fruits2);
-// console.log(exemple);
-const exemple2 = searchInFruits("o", exemple);
-// console.log(exemple2);

@@ -48,11 +48,14 @@ function closeBtn() {
 
       // MISE A JOUR DES RECETTES -------------------------------
       if (tagArray.length == 1) {
-        console.log("1 élément présent");
+        console.log("reste 1 élément présent");
+        sortRecipes(tagArray, recipes);
+      } else if (tagArray.length > 1) {
+        console.log("reste plusieurs éléments présents");
         sortRecipes(tagArray, recipes);
       } else {
-        console.log("plusieurs éléments présents");
-        sortRecipes(tagArray, recettes);
+        sortRecipes(tagArray, recipes);
+
       }
 
       // Tri des recettes si tag enlevé -----
