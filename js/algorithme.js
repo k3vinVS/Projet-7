@@ -13,37 +13,36 @@ title.addEventListener("click", () => {
 });
 // -------------------------------------------------------------------------
 
-// ---------------- TRI DES RECETTES AVEC BOUCLE "FOR", EN FONCTION DE L'INPUT -----------------
+// ---------------- TRI DES RECETTES AVEC METHODE "FILTER", EN FONCTION DE L'INPUT -----------------
 function sortRecipes(arrayOfItems, currentRecipeArray) {
-  for (let j = 0; j < arrayOfItems.length; j++) {
+  arrayOfItems.filter((itemSearch) => {
     let newArrayOfRecipes = [];
 
-    // TRI DES RECETTES -------------------------------------
-    for (let i = 0; i < currentRecipeArray.length; i++) {
-      const element = arrayOfItems[j]
+    currentRecipeArray.filter((recipe) => {
+      const element = itemSearch
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const name = currentRecipeArray[i].name
+      const name = recipe.name
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const description = currentRecipeArray[i].description
+      const description = recipe.description
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const appliance = currentRecipeArray[i].appliance
+      const appliance = recipe.appliance
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const ustensil = currentRecipeArray[i].ustensils
+      const ustensil = recipe.ustensils
         .join()
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const ingredient = currentRecipeArray[i].ingredients;
+      const ingredient = recipe.ingredients;
 
-      // console.log(ustensil);
+      // console.log(ingredient);
 
       if (
         name.includes(element) ||
@@ -51,37 +50,36 @@ function sortRecipes(arrayOfItems, currentRecipeArray) {
         appliance.includes(element) ||
         ustensil.includes(element)
       ) {
-        newArrayOfRecipes.push(currentRecipeArray[i]);
-        // console.log(array);
+        newArrayOfRecipes.push(recipe);
+        // console.log(recettes);
       } else {
         // TRI DES INGREDIENTS DE CHAQUE RECETTE ------------------------------
-        for (let j = 0; j < ingredient.length; j++) {
+        ingredient.filter((ing) => {
           if (
-            ingredient[j].ingredient
+            ing.ingredient
               .toLowerCase()
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
               .includes(element)
           ) {
-            newArrayOfRecipes.push(currentRecipeArray[i]);
-            // console.log(array);
+            newArrayOfRecipes.push(recipe);
+            // console.log(recettes);
           }
-        }
+        });
       }
-    }
+    });
     currentRecipeArray = [...newArrayOfRecipes];
-  }
+  });
   recettes = [...currentRecipeArray];
 
   console.log(recettes);
   cardDisplay(recettes);
 
-  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -----
+  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS ------
   sortDropdown(recettes);
 
-  // TEXTE SI PAS DE RECETTES -------------------------------------------------------
+  // TEXTE SI PAS DE RECETTES -----------------------------------------------------
   if (recettes.length === 0) {
-    // console.log("tableau vide");
     // console.log("pas de recettes");
     noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
     chercher « tarte aux pommes », « poisson », etc...</h4>`;

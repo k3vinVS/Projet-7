@@ -188,12 +188,10 @@ function tagSectionArray(item) {
     tagArray.push(e.target.textContent);
     if (tagArray.length == 1) {
       console.log("1 élément présent dans le tableau");
-      // sortRecipes(tagArray, recipes);
-      sortRecipesMethod(tagArray, recipes);
+      sortRecipes(tagArray, recipes);
     } else {
       console.log("plusieurs éléments présents dans le tableau");
-      // sortRecipes(tagArray, recettes);
-      sortRecipesMethod(tagArray, recettes);
+      sortRecipes(tagArray, recettes);
     } 
     console.log(tagArray);
     // Si recettes triées avec input, affinage des recettes avec tags -----
