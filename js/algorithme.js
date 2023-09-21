@@ -13,36 +13,37 @@ title.addEventListener("click", () => {
 });
 // -------------------------------------------------------------------------
 
-// ---------------- TRI DES RECETTES AVEC METHODE "FILTER", EN FONCTION DE L'INPUT -----------------
-function sortRecipesMethod(arrayOfItems, currentRecipeArray) {
-  arrayOfItems.filter((itemSearch) => {
+// ---------------- TRI DES RECETTES AVEC BOUCLE "FOR", EN FONCTION DE L'INPUT -----------------
+function sortRecipes(arrayOfItems, currentRecipeArray) {
+  for (let j = 0; j < arrayOfItems.length; j++) {
     let newArrayOfRecipes = [];
 
-    currentRecipeArray.filter((recipe) => {
-      const element = itemSearch
+    // TRI DES RECETTES -------------------------------------
+    for (let i = 0; i < currentRecipeArray.length; i++) {
+      const element = arrayOfItems[j]
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const name = recipe.name
+      const name = currentRecipeArray[i].name
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const description = recipe.description
+      const description = currentRecipeArray[i].description
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const appliance = recipe.appliance
+      const appliance = currentRecipeArray[i].appliance
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const ustensil = recipe.ustensils
+      const ustensil = currentRecipeArray[i].ustensils
         .join()
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
-      const ingredient = recipe.ingredients;
+      const ingredient = currentRecipeArray[i].ingredients;
 
-      // console.log(ingredient);
+      // console.log(ustensil);
 
       if (
         name.includes(element) ||
@@ -50,35 +51,35 @@ function sortRecipesMethod(arrayOfItems, currentRecipeArray) {
         appliance.includes(element) ||
         ustensil.includes(element)
       ) {
-        newArrayOfRecipes.push(recipe);
-        // console.log(recettes);
+        newArrayOfRecipes.push(currentRecipeArray[i]);
+        // console.log(array);
       } else {
         // TRI DES INGREDIENTS DE CHAQUE RECETTE ------------------------------
-        ingredient.filter((ing) => {
+        for (let j = 0; j < ingredient.length; j++) {
           if (
-            ing.ingredient
+            ingredient[j].ingredient
               .toLowerCase()
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
               .includes(element)
           ) {
-            newArrayOfRecipes.push(recipe);
-            // console.log(recettes);
+            newArrayOfRecipes.push(currentRecipeArray[i]);
+            // console.log(array);
           }
-        });
+        }
       }
-    });
+    }
     currentRecipeArray = [...newArrayOfRecipes];
-  });
+  }
   recettes = [...currentRecipeArray];
 
   console.log(recettes);
   cardDisplay(recettes);
 
-  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS ------
+  // TRIE DES ELEMENTS DES DROPDOWNS + AFFICHAGE DES CARTES TRIEES AVEC TAGS -----
   sortDropdown(recettes);
 
-  // TEXTE SI PAS DE RECETTES -----------------------------------------------------
+  // TEXTE SI PAS DE RECETTES -------------------------------------------------------
   if (recettes.length === 0) {
     // console.log("pas de recettes");
     noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
@@ -95,15 +96,15 @@ inputSearch.addEventListener("input", () => {
   if (inputValue.length > 2) {
     if (tagArray.length == 0) {
       tagArray[0] = inputValue;
-      sortRecipesMethod(tagArray, recipes);
+      sortRecipes(tagArray, recipes);
     } else {
       tagArray[tagArray.length - 1] = inputValue;
-      sortRecipesMethod(tagArray, recettes);
+      sortRecipes(tagArray, recettes);
     }
   } else if (inputValue.length < 3) {
     console.log("pas d'input");
     tagArray.splice(inputValue, 1);
-    sortRecipesMethod(tagArray, recipes);
+    sortRecipes(tagArray, recipes);
   }
 
   // Si input vide et aucun tag, remise à zéro des recettes et ce qui s'y rattache -----
