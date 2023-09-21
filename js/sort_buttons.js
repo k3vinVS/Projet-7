@@ -188,10 +188,12 @@ function tagSectionArray(item) {
     tagArray.push(e.target.textContent);
     if (tagArray.length == 1) {
       console.log("1 élément présent dans le tableau");
-      sortRecipes(tagArray, recipes);
+      // sortRecipes(tagArray, recipes);
+      sortRecipesMethod(tagArray, recipes);
     } else {
       console.log("plusieurs éléments présents dans le tableau");
-      sortRecipes(tagArray, recettes);
+      // sortRecipes(tagArray, recettes);
+      sortRecipesMethod(tagArray, recettes);
     } 
     console.log(tagArray);
     // Si recettes triées avec input, affinage des recettes avec tags -----
@@ -212,11 +214,6 @@ function tagSectionArray(item) {
     //     }
     //   }
     // }
-
-    // Pour chaque tag, tri et affichage  des recettes -----
-
-    // DEUXIEME METHODE DE TRI -------
-    // sortRecipesMethod(e.target.textContent, tagArray);
 
     // Mets à zéro l'input de recherche si tag similaire -----
     if (
@@ -251,8 +248,6 @@ function inputDropdown() {
     // AU CLIQUE D'UN ELEMENT, DISPARISTION DES INPUTS DES DROPDOWNS ----------
     dropdownMenu[i].onclick = (e) => {
       textButton();
-      // console.log(dropdownMenu[i]);
-      // e.target.remove();
     };
 
     // REMOVE INPUT SEARCH OF DROPDOWN BUTTONS ---------------------------------
@@ -317,9 +312,8 @@ function sortDropdown(tagRecettes, recettes) {
         let newTabUst = [...setUst];
         tabUst = newTabUst;
       }
-      // recettes = [...tabIng, ...tabApp, ...tabUst];
       recettes = tabUst;
-      // tabUst = recettes;
+
       cardDisplay(tagRecettes);
       // console.log(tagRecettes);
     }
@@ -357,10 +351,4 @@ function filterTabElement(tagArray, tagElements) {
   return newTagElements;
 }
 
-// Fonction pour savoir s'il y a des doublons dans un tableau  -----------------------------------
-// function hasDuplicates(arr) {
-//   return arr.some((x) => arr.indexOf(x) !== arr.lastIndexOf(x));
-// }
-// function isUnique(item, position, array) {
-//   return array.indexOf(item) === position;
-// }
+

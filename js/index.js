@@ -1,6 +1,5 @@
 // ------------------------------------- DOM ELEMENTS -------------------------------------
 const title = document.querySelector(".text-center");
-const searching = document.querySelector(".search");
 const inputSearch = document.getElementById("input-form");
 const noResult = document.getElementById("no-result");
 const cardSection = document.querySelector(".card-section");
@@ -11,18 +10,6 @@ let tagRecettes = [];
 // ------------------------------------- RECHARGE LA PAGE EN CLIQUANT SUR LE LOGO DU SITE -------------------------------------
 title.addEventListener("click", () => {
   location.reload();
-});
-// -------------------------------------------------------------------------
-
-// --------------------- EFFACE L'ENTREE DANS L'INPUT, CONSERVE LES CARTES TRIEES, EN CLIQUANT SUR LA LOUPE --------------------------
-searching.addEventListener("click", (e) => {
-  if (inputSearch.value.length < 3) {
-    alert("Indiquer au moins 3 lettres pour trouver une recette");
-    cardDisplay(recipes);
-  } else {
-    inputSearch.value = ""; // Remise à zéro de l'input
-    // cardDisplay(recettes);
-  }
 });
 // -------------------------------------------------------------------------
 
@@ -115,7 +102,7 @@ inputSearch.addEventListener("input", () => {
       tagArray[tagArray.length - 1] = inputValue;
       sortRecipes(tagArray, recettes);
     }
-  } else if (inputValue.length === 0) {
+  } else if (inputValue.length < 3) {
     console.log("pas d'input");
     tagArray.splice(inputValue, 1);
     sortRecipes(tagArray, recipes);
