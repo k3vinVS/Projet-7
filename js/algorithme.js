@@ -56,7 +56,6 @@ function sortRecipes(arrayOfItems, currentRecipeArray) {
       } else {
         // TRI DES INGREDIENTS DE CHAQUE RECETTE ------------------------------
         for (let k = 0; k < ingredient.length; k++) {
-          console.log(ingredient[k]);
           if (
             ingredient[k].ingredient
               .toLowerCase()
