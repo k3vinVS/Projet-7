@@ -231,7 +231,7 @@ function inputDropdown() {
 
         // Si aucun tag n'est sélectionné, remise à zéro des dropdowns -----
         if (tagSection.lastElementChild === null) {
-          // console.log("pas de texte dans l'input");
+          console.log("pas de texte dans l'input");
           dropdownItem();
         }
       };
