@@ -68,15 +68,16 @@ svg {
   outline: none;
 }
 
-.search-text-button {
-  margin: 0;
-}
+// .search-text-button {
+//   margin: 0;
+// }
 
 .input-search-dropdown {
   display: none;
   color: white;
   background: none;
   outline: none;
+  border: none;
   width: 205px;
 }
 
@@ -293,11 +294,7 @@ svg {
 
   .btn {
     width: 100%;
-    padding: 14px;
-  }
-
-  .btn p {
-    padding-top: 8px;
+    padding: 22px;
   }
 
   .input-group {
@@ -306,7 +303,6 @@ svg {
 
   #input-form {
     height: 3rem;
-    // text-align: center;
   }
 
   #input-form::placeholder {
@@ -318,7 +314,6 @@ svg {
   }
 
   .input-search-dropdown {
-    padding-top: 0.5rem;
     width: 182px;
   }
 

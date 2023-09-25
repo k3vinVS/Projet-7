@@ -10,7 +10,7 @@ const inputSearchDropdown = document.querySelectorAll(".input-search-dropdown");
 const dropdownMenu = document.querySelectorAll(".dropdown-menu");
 const tagSection = document.querySelector(".tag-section");
 const dropdownBtn = document.querySelectorAll(".sort-button");
-const textBtn = document.querySelectorAll(".search-text-button");
+const textBtn = document.querySelectorAll(".btn");
 
 // ------------------------------- AFFICHAGE DES ELEMENTS DU DROPDOWN -------------------------------
 function dropdownItem() {
@@ -213,39 +213,42 @@ tagSectionArray(dropdownUstensilItem);
 // ------------------------------- AFFICHAGE DES BOUTONS DE TRI (COULEURS,...) + INPUT DE CHAQUE BOUTONS -------------------------------
 function inputDropdown() {
   for (let i = 0; i < dropdownBtn.length; i++) {
-    dropdownBtn[i].onclick = (e) => {
-      textBtn[i].innerText = "";
+    dropdownBtn[i].onclick = () => {
+      // Efface le texte des boutons -----
+      textBtn[i].firstChild.textContent = "";
+
+      // Affiche l'input des boutons -----
       inputSearchDropdown[i].style.display = "inline-block";
-      inputSearchDropdown[i].style.border = "none";
+
+      // Affiche le dropdown -----
       dropdownMenu[i].style.display = "block";
+
       window.onclick = () => {
         textButton();
+
+        // Disparition du dropdown -----
         dropdownMenu[i].style.display = "none";
+
+        // Si aucun tag n'est sélectionné, remise à zéro des dropdowns -----
         if (tagSection.lastElementChild === null) {
           // console.log("pas de texte dans l'input");
           dropdownItem();
         }
-        // console.log("test dropdown");
       };
     };
 
-    // AU CLIQUE D'UN ELEMENT, DISPARISTION DES INPUTS DES DROPDOWNS ----------
-    dropdownMenu[i].onclick = (e) => {
-      textButton();
-    };
-
-    // REMOVE INPUT SEARCH OF DROPDOWN BUTTONS ---------------------------------
+    // Enlève les inputs des boutons de tags et remets les titres des boutons -----
     function textButton() {
       inputSearchDropdown[i].style.display = "none";
       inputSearchDropdown[i].value = "";
       if (dropdownBtn[i].style.backgroundColor === "rgb(237, 100, 84)") {
-        textBtn[i].textContent = "Ustensiles";
+        textBtn[i].firstChild.textContent = "Ustensiles";
       } else if (
         dropdownBtn[i].style.backgroundColor === "rgb(104, 217, 164)"
       ) {
-        textBtn[i].textContent = "Appareils";
+        textBtn[i].firstChild.textContent = "Appareils";
       } else {
-        textBtn[i].textContent = "Ingredients";
+        textBtn[i].firstChild.textContent = "Ingrédients";
       }
     }
   }
