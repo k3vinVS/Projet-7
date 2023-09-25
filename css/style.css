@@ -7,7 +7,7 @@
 }
 
 .container {
-  width: 1240px;
+  max-width: 1240px;
 }
 
 header h1,
@@ -251,9 +251,6 @@ svg {
     display: flex;
     flex-direction: column;
   }
-  .btn-group {
-    margin-right: 0 !important;
-  }
   .dropdown-menu {
     width: 100%;
   }
@@ -262,6 +259,10 @@ svg {
   }
   .btn {
     width: 100%;
+    padding: 14px;
+  }
+  .btn p {
+    padding-top: 8px;
   }
   .input-group {
     width: 2rem;
@@ -275,9 +276,13 @@ svg {
   .search {
     width: 3rem;
   }
-  .input-search {
-    margin-left: -1.5rem;
-    margin-right: -0.5rem;
+  .input-search-dropdown {
+    padding-top: 0.5rem;
+    width: 182px;
+  }
+  .input-search-dropdown::placeholder {
+    font-size: 1rem;
+    margin-left: 0;
   }
   .col-12 {
     display: flex;
@@ -332,6 +337,16 @@ svg {
 @media (min-width: 769px) and (max-width: 991px) {
   .card-section {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 710px) and (max-width: 768px) {
+  .dropdown-ustensil-item {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 769px) and (max-width: 960px) {
+  .dropdown-ustensil-item {
     grid-template-columns: 1fr 1fr;
   }
 }

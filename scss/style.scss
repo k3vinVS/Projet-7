@@ -8,7 +8,7 @@
 }
 
 .container {
-  width: 1240px;
+  max-width: 1240px;
 }
 
 //---------------------- HEADER ----------------------
@@ -283,18 +283,21 @@ svg {
     flex-direction: column;
   }
 
-  .btn-group {
-    margin-right: 0 !important;
-  }
-
   .dropdown-menu {
     width: 100%;
   }
+
   .dropdown-ingredient-item {
     gap: 1rem;
   }
+
   .btn {
     width: 100%;
+    padding: 14px;
+  }
+
+  .btn p {
+    padding-top: 8px;
   }
 
   .input-group {
@@ -303,6 +306,7 @@ svg {
 
   #input-form {
     height: 3rem;
+    // text-align: center;
   }
 
   #input-form::placeholder {
@@ -313,9 +317,14 @@ svg {
     width: 3rem;
   }
 
-  .input-search {
-    margin-left: -1.5rem;
-    margin-right: -0.5rem;
+  .input-search-dropdown {
+    padding-top: 0.5rem;
+    width: 182px;
+  }
+
+  .input-search-dropdown::placeholder {
+    font-size: 1rem;
+    margin-left: 0;
   }
 
   .col-12 {
@@ -386,6 +395,16 @@ svg {
   }
 }
 
+@media (min-width: 710px) and (max-width: 768px) {
+  .dropdown-ustensil-item {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 769px) and (max-width: 960px) {
+  .dropdown-ustensil-item {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 90vw;

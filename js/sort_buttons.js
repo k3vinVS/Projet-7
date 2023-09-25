@@ -221,6 +221,10 @@ function inputDropdown() {
       window.onclick = () => {
         textButton();
         dropdownMenu[i].style.display = "none";
+        if (tagSection.lastElementChild === null) {
+          // console.log("pas de texte dans l'input");
+          dropdownItem();
+        }
         // console.log("test dropdown");
       };
     };
