@@ -176,13 +176,13 @@ function tagSectionArray(item) {
   item.addEventListener("click", (e) => {
     if (item === dropdownIngredientItem) {
       tagSection.innerHTML += displayTag(e, "#0069d9");
-      // tagArray.push(e.target.textContent);
+      inputSearchDropdown[0].value = ""; // Pour remettre à zéro l'input du dropdown -----
     } else if (item === dropdownApplianceItem) {
       tagSection.innerHTML += displayTag(e, "#68d9a4");
-      // tagArray.push(e.target.textContent);
+      inputSearchDropdown[1].value = "";
     } else if (item === dropdownUstensilItem) {
       tagSection.innerHTML += displayTag(e, "#ed6454");
-      // tagArray.push(e.target.textContent);
+      inputSearchDropdown[2].value = "";
     }
 
     tagArray.push(e.target.textContent);
