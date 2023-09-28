@@ -1,4 +1,5 @@
 // ------------------------------------- DOM ELEMENTS -------------------------------------
+const form = document.querySelector("form");
 const title = document.querySelector(".text-center");
 const inputSearch = document.getElementById("input-form");
 const noResult = document.getElementById("no-result");
@@ -6,6 +7,11 @@ const cardSection = document.querySelector(".card-section");
 let tagArray = [];
 let recettes = [];
 let tagRecettes = [];
+
+// ------------------------------------- EMPÊCHE L'ENVOI DU FORMULAIRE -------------------------------------
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
 // ------------------------------------- RECHARGE LA PAGE EN CLIQUANT SUR LE LOGO DU SITE -------------------------------------
 title.addEventListener("click", () => {
