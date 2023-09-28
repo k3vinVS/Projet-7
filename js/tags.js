@@ -50,7 +50,7 @@ function closeBtn() {
         console.log("reste 1 élément présent");
         sortRecipes(tagArray, recipes);
       } else if (tagArray.length > 1) {
-        console.log("reste plusieurs éléments présents");
+        console.log("reste plusieurs éléments");
         sortRecipes(tagArray, recipes);
       } else {
         console.log("tableau vide");

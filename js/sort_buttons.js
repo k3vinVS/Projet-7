@@ -228,19 +228,13 @@ function inputDropdown() {
 
         // Disparition du dropdown -----
         dropdownMenu[i].style.display = "none";
-
-        // Si aucun tag n'est sélectionné, remise à zéro des dropdowns -----
-        if (tagSection.lastElementChild === null) {
-          console.log("pas de texte dans l'input");
-          dropdownItem();
-        }
       };
     };
 
     // Enlève les inputs des boutons de tags et remets les titres des boutons -----
     function textButton() {
       inputSearchDropdown[i].style.display = "none";
-      inputSearchDropdown[i].value = "";
+      // inputSearchDropdown[i].value = ""; // Pour remettre à zéro l'input des dropdowns -----
       if (dropdownBtn[i].style.backgroundColor === "rgb(237, 100, 84)") {
         textBtn[i].firstChild.textContent = "Ustensiles";
       } else if (
