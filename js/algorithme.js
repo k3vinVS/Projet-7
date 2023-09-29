@@ -87,8 +87,8 @@ function sortRecipes(arrayOfItems, currentRecipeArray) {
 
   // TEXTE SI PAS DE RECETTES -------------------------------------------------------
   if (recettes.length === 0) {
-    // console.log("pas de recettes");
-    noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne correspond à votre critère.</br> Vous pouvez
+    // console.log("pas de recette");
+    noResult.innerHTML = `<h4 class='text-center text-warning'>Aucune recette ne contient '${inputSearch.value}'.</br> Vous pouvez
     chercher « tarte aux pommes », « poisson », etc...</h4>`;
     cardSection.innerHTML = "";
   }
